@@ -82,7 +82,6 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
-        /* Full screen image modal */
         .image-modal {
             position: fixed;
             top: 0;
@@ -115,7 +114,7 @@
 </head>
 <body class="antialiased selection:bg-cyan-500 selection:text-white">
 
-    <!-- Navigation - Direct Links in Header -->
+    <!-- Navigation -->
     <nav class="fixed w-full z-50 glass-panel border-b border-white/10 transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
@@ -126,7 +125,6 @@
                         <p class="text-xs text-slate-400 -mt-1">Embedded Systems & Robotics</p>
                     </div>
                 </div>
-                <!-- Direct Navigation Links - No Hamburger Menu -->
                 <div class="hidden md:flex items-center gap-6">
                     <a onclick="scrollToSection('home')" class="nav-link text-white hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</a>
                     <a onclick="scrollToSection('about')" class="nav-link text-slate-300 hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">About</a>
@@ -135,7 +133,6 @@
                     <a onclick="scrollToSection('contact')" class="nav-link text-slate-300 hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Contact</a>
                     <a onclick="scrollToSection('contact')" class="bg-cyan-500 hover:bg-cyan-600 text-white px-5 py-2 rounded-full text-sm font-medium transition-all shadow-lg shadow-cyan-500/25 ml-4">Get Quote</a>
                 </div>
-                <!-- Mobile: Show text links instead of hamburger -->
                 <div class="flex md:hidden items-center gap-3 overflow-x-auto no-scrollbar">
                     <a onclick="scrollToSection('home')" class="text-white text-xs whitespace-nowrap">Home</a>
                     <a onclick="scrollToSection('about')" class="text-slate-300 text-xs whitespace-nowrap">About</a>
@@ -261,7 +258,7 @@
         </div>
     </section>
 
-    <!-- Services Section -->
+    <!-- Services Section - REMOVED AIR STERILIZATION CARD -->
     <section id="services" class="py-24 bg-slate-800/50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
@@ -322,29 +319,7 @@
                     </ul>
                 </div>
 
-                <!-- Service 5: Air Sterilizer (With Brochures) -->
-                <div class="glass-panel p-8 rounded-2xl hover:bg-slate-800 transition-all duration-300 group border border-transparent hover:border-cyan-500/30 md:col-span-2 lg:col-span-1">
-                    <div class="w-14 h-14 bg-cyan-500/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-cyan-500/20 transition-colors">
-                        <i class="fas fa-wind text-2xl text-cyan-400"></i>
-                    </div>
-                    <h4 class="text-xl font-bold text-white mb-3">Air Sterilization</h4>
-                    <p class="text-slate-400 text-sm mb-4">Advanced air purification systems removing bacteria, viruses, dust, and harmful pollutants.</p>
-                    
-                    <div class="mt-4 pt-4 border-t border-white/10 space-y-2">
-                        <p class="text-xs text-slate-500 uppercase font-semibold mb-2">Download Brochures:</p>
-                        <a href="Air Quality Index Monitor.pdf" download class="flex items-center gap-2 text-sm text-cyan-400 hover:text-cyan-300 transition-colors">
-                            <i class="fas fa-file-pdf"></i> Air Quality Index Monitor
-                        </a>
-                        <a href="Industrial Air Sterilization system.pdf" download class="flex items-center gap-2 text-sm text-cyan-400 hover:text-cyan-300 transition-colors">
-                            <i class="fas fa-file-pdf"></i> Industrial Air Sterilization
-                        </a>
-                        <a href="Krira Tech Air Sterilization a Healthier Life.pdf" download class="flex items-center gap-2 text-sm text-cyan-400 hover:text-cyan-300 transition-colors">
-                            <i class="fas fa-file-pdf"></i> A Healthier Life
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Service 6: Drone -->
+                <!-- Service 5: Drone -->
                 <div class="glass-panel p-8 rounded-2xl hover:bg-slate-800 transition-all duration-300 group border border-transparent hover:border-cyan-500/30">
                     <div class="w-14 h-14 bg-yellow-500/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-yellow-500/20 transition-colors">
                         <i class="fas fa-plane text-2xl text-yellow-400"></i>
@@ -357,7 +332,7 @@
                     </ul>
                 </div>
 
-                <!-- Service 7 -->
+                <!-- Service 6 -->
                 <div class="glass-panel p-8 rounded-2xl hover:bg-slate-800 transition-all duration-300 group border border-transparent hover:border-cyan-500/30">
                     <div class="w-14 h-14 bg-indigo-500/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-indigo-500/20 transition-colors">
                         <i class="fas fa-code text-2xl text-indigo-400"></i>
@@ -370,7 +345,7 @@
                     </ul>
                 </div>
 
-                 <!-- Service 8 -->
+                 <!-- Service 7 -->
                  <div class="glass-panel p-8 rounded-2xl hover:bg-slate-800 transition-all duration-300 group border border-transparent hover:border-cyan-500/30">
                     <div class="w-14 h-14 bg-pink-500/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-pink-500/20 transition-colors">
                         <i class="fas fa-mobile-alt text-2xl text-pink-400"></i>
@@ -383,8 +358,8 @@
                     </ul>
                 </div>
 
-                 <!-- Service 9 -->
-                 <div class="glass-panel p-8 rounded-2xl hover:bg-slate-800 transition-all duration-300 group border border-transparent hover:border-cyan-500/30">
+                 <!-- Service 8 -->
+                 <div class="glass-panel p-8 rounded-2xl hover:bg-slate-800 transition-all duration-300 group border border-transparent hover:border-cyan-500/30 md:col-span-2 lg:col-span-1">
                     <div class="w-14 h-14 bg-orange-500/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-orange-500/20 transition-colors">
                         <i class="fas fa-graduation-cap text-2xl text-orange-400"></i>
                     </div>
@@ -399,7 +374,7 @@
         </div>
     </section>
 
-    <!-- Products Section -->
+    <!-- Products Section - ADDED AIR STERILIZER MACHINE WITH PDFs -->
     <section id="products" class="py-24 bg-slate-900 relative overflow-hidden">
         <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-blue-900/20 to-transparent pointer-events-none"></div>
 
@@ -411,11 +386,38 @@
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- NEW PRODUCT: Outdoor Air Sterilizer & AQI IoT System Integration -->
+                <!-- NEW PRODUCT: Air Sterilizer Machine with PDFs -->
+                <div class="group relative bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-cyan-500/50 transition-all duration-300 hover:-translate-y-2">
+                    <div class="h-48 bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors"></div>
+                        <i class="fas fa-shield-virus text-6xl text-white/80 group-hover:scale-110 transition-transform duration-500"></i>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold text-white mb-2">Air Sterilizer Machine</h4>
+                        <p class="text-slate-400 text-sm mb-4">An advanced air sterilization solution designed to eliminate airborne pathogens, allergens, and pollutants using multi-stage purification technology.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-slate-700 rounded text-xs text-slate-300">UV-C</span>
+                            <span class="px-2 py-1 bg-slate-700 rounded text-xs text-slate-300">HEPA</span>
+                            <span class="px-2 py-1 bg-slate-700 rounded text-xs text-slate-300">IoT</span>
+                        </div>
+                        <!-- PDF Downloads for Air Sterilizer -->
+                        <div class="mt-3 pt-3 border-t border-white/10 space-y-2 mb-4">
+                            <p class="text-xs text-slate-500 uppercase font-semibold">Download Brochures:</p>
+                            <a href="Industrial Air Sterilization system.pdf" download class="flex items-center gap-2 text-xs text-cyan-400 hover:text-cyan-300 transition-colors">
+                                <i class="fas fa-file-pdf"></i> Industrial Air Sterilization
+                            </a>
+                            <a href="Krira Tech Air Sterilization a Healthier Life.pdf" download class="flex items-center gap-2 text-xs text-cyan-400 hover:text-cyan-300 transition-colors">
+                                <i class="fas fa-file-pdf"></i> A Healthier Life
+                            </a>
+                        </div>
+                        <button onclick="openModal('sterilizer_machine')" class="w-full py-2 border border-cyan-500 text-cyan-400 rounded-lg hover:bg-cyan-500 hover:text-white transition-colors text-sm font-semibold">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Outdoor Air Sterilizer & AQI IoT System Integration -->
                 <div class="group relative bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-emerald-500/50 transition-all duration-300 hover:-translate-y-2">
                     <div class="h-48 bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center relative overflow-hidden">
                         <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors"></div>
-                        <!-- Product Image -->
                         <img src="AQI.jpg" alt="Outdoor Air Sterilizer & AQI IoT System" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity">
                     </div>
                     <div class="p-6">
@@ -426,26 +428,32 @@
                             <span class="px-2 py-1 bg-slate-700 rounded text-xs text-slate-300">AQI</span>
                             <span class="px-2 py-1 bg-slate-700 rounded text-xs text-slate-300">IoT</span>
                         </div>
-                        <!-- View Details opens full image -->
                         <button onclick="openImageModal('AQI.jpg')" class="w-full py-2 border border-emerald-500 text-emerald-400 rounded-lg hover:bg-emerald-500 hover:text-white transition-colors text-sm font-semibold">View Details</button>
                     </div>
                 </div>
 
-                <!-- Product 1 -->
-                <div class="group relative bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-cyan-500/50 transition-all duration-300 hover:-translate-y-2">
+                <!-- AQI Monitoring Device - WITH Air Quality Index Monitor PDF -->
+                <div class="group relative bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-teal-500/50 transition-all duration-300 hover:-translate-y-2">
                     <div class="h-48 bg-gradient-to-br from-teal-500 to-emerald-600 flex items-center justify-center relative overflow-hidden">
                         <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors"></div>
                         <i class="fas fa-wind text-6xl text-white/80 group-hover:scale-110 transition-transform duration-500"></i>
                     </div>
                     <div class="p-6">
                         <h4 class="text-xl font-bold text-white mb-2">AQI Monitoring Device</h4>
-                        <p class="text-slate-400 text-sm mb-4 h-10">Real-time air quality monitoring with IoT connectivity for environmental analysis.</p>
+                        <p class="text-slate-400 text-sm mb-4">Real-time air quality monitoring with IoT connectivity for environmental analysis.</p>
                         <div class="flex flex-wrap gap-2 mb-4">
                             <span class="px-2 py-1 bg-slate-700 rounded text-xs text-slate-300">PM2.5</span>
                             <span class="px-2 py-1 bg-slate-700 rounded text-xs text-slate-300">CO2</span>
                             <span class="px-2 py-1 bg-slate-700 rounded text-xs text-slate-300">IoT</span>
                         </div>
-                        <button onclick="openModal('aqi')" class="w-full py-2 border border-cyan-500 text-cyan-400 rounded-lg hover:bg-cyan-500 hover:text-white transition-colors text-sm font-semibold">View Details</button>
+                        <!-- PDF Download for AQI Monitoring Device -->
+                        <div class="mt-3 pt-3 border-t border-white/10 space-y-2 mb-4">
+                            <p class="text-xs text-slate-500 uppercase font-semibold">Download Brochure:</p>
+                            <a href="Air Quality Index Monitor.pdf" download class="flex items-center gap-2 text-xs text-teal-400 hover:text-teal-300 transition-colors">
+                                <i class="fas fa-file-pdf"></i> Air Quality Index Monitor
+                            </a>
+                        </div>
+                        <button onclick="openModal('aqi')" class="w-full py-2 border border-teal-500 text-teal-400 rounded-lg hover:bg-teal-500 hover:text-white transition-colors text-sm font-semibold">View Details</button>
                     </div>
                 </div>
 
@@ -704,7 +712,7 @@
         function scrollToSection(sectionId) {
             const element = document.getElementById(sectionId);
             if (element) {
-                const offsetTop = element.offsetTop - 80; // Account for fixed header
+                const offsetTop = element.offsetTop - 80;
                 window.scrollTo({
                     top: offsetTop,
                     behavior: 'smooth'
@@ -712,8 +720,21 @@
             }
         }
 
-        // Product Data
+        // Product Data - Added Air Sterilizer Machine
         const products = {
+            'sterilizer_machine': {
+                title: 'Air Sterilizer Machine',
+                desc: 'An advanced air sterilization solution designed to eliminate airborne pathogens, allergens, and pollutants using multi-stage purification technology. Continuously monitors indoor air quality and automatically optimizes sterilization performance for safe, clean, and healthy environments.',
+                features: [
+                    'High-efficiency air sterilization using UV-C and advanced filtration',
+                    'Real-time air quality monitoring (PM, VOCs, microbes)',
+                    'Automatic adjustment of sterilization intensity',
+                    'Continuous and scheduled operation modes',
+                    'Low-noise, energy-efficient operation',
+                    'Smart sensor integration for adaptive control'
+                ],
+                tags: ['Hospitals', 'Offices', 'Schools', 'Hotels', 'Industrial']
+            },
             'aqi': {
                 title: 'AQI Monitoring Device',
                 desc: 'An advanced IoT-enabled system designed to measure and track air quality in real-time. It monitors critical parameters including particulate matter (PM2.5, PM10), CO2 levels, temperature, and humidity.',
