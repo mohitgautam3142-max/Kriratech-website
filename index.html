@@ -323,38 +323,46 @@
 <div class="glass-panel p-8 rounded-2xl hover:bg-slate-800 transition-all duration-300 group border border-transparent hover:border-cyan-500/30">
 
     <div class="w-14 h-14 bg-yellow-500/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-yellow-500/20 transition-colors">
-        <!-- Top View Drone SVG -->
+        <!-- Exact Top-View Drone SVG -->
         <svg xmlns="http://www.w3.org/2000/svg"
              viewBox="0 0 512 512"
              class="w-8 h-8 fill-current text-yellow-400">
 
             <!-- Arms -->
-            <rect x="244" y="80" width="24" height="160" transform="rotate(45 256 160)"/>
-            <rect x="244" y="80" width="24" height="160" transform="rotate(-45 256 160)"/>
-            <rect x="244" y="272" width="24" height="160" transform="rotate(45 256 352)"/>
-            <rect x="244" y="272" width="24" height="160" transform="rotate(-45 256 352)"/>
+            <rect x="248" y="40" width="16" height="200" transform="rotate(45 256 140)"/>
+            <rect x="248" y="40" width="16" height="200" transform="rotate(-45 256 140)"/>
+            <rect x="248" y="272" width="16" height="200" transform="rotate(45 256 372)"/>
+            <rect x="248" y="272" width="16" height="200" transform="rotate(-45 256 372)"/>
 
-            <!-- Rotor Rings -->
-            <circle cx="96" cy="96" r="44"/>
-            <circle cx="416" cy="96" r="44"/>
-            <circle cx="96" cy="416" r="44"/>
-            <circle cx="416" cy="416" r="44"/>
+            <!-- Motor Rings -->
+            <circle cx="96" cy="96" r="42"/>
+            <circle cx="416" cy="96" r="42"/>
+            <circle cx="96" cy="416" r="42"/>
+            <circle cx="416" cy="416" r="42"/>
 
-            <!-- Propellers -->
-            <path d="M96 80c16 0 16 32 0 32s-16-32 0-32z"/>
-            <path d="M80 96c0-16 32-16 32 0s-32 16-32 0z"/>
+            <!-- Propellers (3 blades each) -->
+            <!-- Top Left -->
+            <path d="M96 70c14 0 14 24 0 24s-14-24 0-24z"/>
+            <path d="M72 100c0-14 24-14 24 0s-24 14-24 0z"/>
+            <path d="M108 108c-10-10 10-30 20-20s-10 30-20 20z"/>
 
-            <path d="M416 80c16 0 16 32 0 32s-16-32 0-32z"/>
-            <path d="M400 96c0-16 32-16 32 0s-32 16-32 0z"/>
+            <!-- Top Right -->
+            <path d="M416 70c14 0 14 24 0 24s-14-24 0-24z"/>
+            <path d="M392 100c0-14 24-14 24 0s-24 14-24 0z"/>
+            <path d="M428 108c-10-10 10-30 20-20s-10 30-20 20z"/>
 
-            <path d="M96 400c16 0 16 32 0 32s-16-32 0-32z"/>
-            <path d="M80 416c0-16 32-16 32 0s-32 16-32 0z"/>
+            <!-- Bottom Left -->
+            <path d="M96 390c14 0 14 24 0 24s-14-24 0-24z"/>
+            <path d="M72 420c0-14 24-14 24 0s-24 14-24 0z"/>
+            <path d="M108 428c-10-10 10-30 20-20s-10 30-20 20z"/>
 
-            <path d="M416 400c16 0 16 32 0 32s-16-32 0-32z"/>
-            <path d="M400 416c0-16 32-16 32 0s-32 16-32 0z"/>
+            <!-- Bottom Right -->
+            <path d="M416 390c14 0 14 24 0 24s-14-24 0-24z"/>
+            <path d="M392 420c0-14 24-14 24 0s-24 14-24 0z"/>
+            <path d="M428 428c-10-10 10-30 20-20s-10 30-20 20z"/>
 
             <!-- Central Body -->
-            <rect x="216" y="176" width="80" height="160" rx="30"/>
+            <rect x="212" y="176" width="88" height="160" rx="40"/>
         </svg>
     </div>
 
