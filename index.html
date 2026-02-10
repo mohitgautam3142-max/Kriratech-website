@@ -323,17 +323,29 @@
 <div class="glass-panel p-8 rounded-2xl hover:bg-slate-800 transition-all duration-300 group border border-transparent hover:border-cyan-500/30">
 
     <div class="w-14 h-14 bg-yellow-500/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-yellow-500/20 transition-colors">
-        <!-- Drone SVG Icon -->
+        <!-- Accurate Quadcopter Drone SVG -->
         <svg xmlns="http://www.w3.org/2000/svg"
              viewBox="0 0 512 512"
-             class="w-8 h-8 text-yellow-400 fill-current">
-            <path d="M256 224c-17.7 0-32 14.3-32 32s14.3 32 32 32 
-            32-14.3 32-32-14.3-32-32-32zm176-80h-80c-8.8 0-16 7.2-16 16v16H176v-16
-            c0-8.8-7.2-16-16-16H80c-26.5 0-48 21.5-48 48s21.5 48 48 48h80
-            c8.8 0 16-7.2 16-16v-16h160v16c0 8.8 7.2 16 16 16h80
-            c26.5 0 48-21.5 48-48s-21.5-48-48-48zm0 64h-64v-32h64
-            c8.8 0 16 7.2 16 16s-7.2 16-16 16zM80 176h64v32H80
-            c-8.8 0-16-7.2-16-16s7.2-16 16-16z"/>
+             class="w-8 h-8 fill-current text-yellow-400">
+
+            <!-- Propellers -->
+            <circle cx="96" cy="96" r="44"/>
+            <circle cx="416" cy="96" r="44"/>
+            <circle cx="96" cy="416" r="44"/>
+            <circle cx="416" cy="416" r="44"/>
+
+            <!-- Arms -->
+            <rect x="120" y="88" width="272" height="16"/>
+            <rect x="120" y="408" width="272" height="16"/>
+            <rect x="88" y="120" width="16" height="272"/>
+            <rect x="408" y="120" width="16" height="272"/>
+
+            <!-- Central Body -->
+            <rect x="176" y="176" width="160" height="120" rx="20"/>
+
+            <!-- Camera -->
+            <rect x="224" y="300" width="64" height="40" rx="10"/>
+            <circle cx="256" cy="320" r="10"/>
         </svg>
     </div>
 
