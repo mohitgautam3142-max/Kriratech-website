@@ -329,40 +329,43 @@
              class="w-8 h-8 fill-current text-yellow-400">
 
             <!-- Arms -->
-            <rect x="248" y="40" width="16" height="200" transform="rotate(45 256 140)"/>
-            <rect x="248" y="40" width="16" height="200" transform="rotate(-45 256 140)"/>
-            <rect x="248" y="272" width="16" height="200" transform="rotate(45 256 372)"/>
-            <rect x="248" y="272" width="16" height="200" transform="rotate(-45 256 372)"/>
+            <rect x="248" y="64" width="16" height="160" transform="rotate(45 256 144)"/>
+            <rect x="248" y="64" width="16" height="160" transform="rotate(-45 256 144)"/>
+            <rect x="248" y="288" width="16" height="160" transform="rotate(45 256 368)"/>
+            <rect x="248" y="288" width="16" height="160" transform="rotate(-45 256 368)"/>
 
-            <!-- Motor Rings -->
-            <circle cx="96" cy="96" r="42"/>
-            <circle cx="416" cy="96" r="42"/>
-            <circle cx="96" cy="416" r="42"/>
-            <circle cx="416" cy="416" r="42"/>
+            <!-- Rotor Rings -->
+            <circle cx="128" cy="128" r="44"/>
+            <circle cx="384" cy="128" r="44"/>
+            <circle cx="128" cy="384" r="44"/>
+            <circle cx="384" cy="384" r="44"/>
 
-            <!-- Propellers (3 blades each) -->
+            <!-- Propellers (3 blades each, triangular style) -->
             <!-- Top Left -->
-            <path d="M96 70c14 0 14 24 0 24s-14-24 0-24z"/>
-            <path d="M72 100c0-14 24-14 24 0s-24 14-24 0z"/>
-            <path d="M108 108c-10-10 10-30 20-20s-10 30-20 20z"/>
+            <path d="M128 98 L140 130 L116 130 Z"/>
+            <path d="M98 128 L130 140 L130 116 Z"/>
+            <path d="M158 128 L126 116 L126 140 Z"/>
 
             <!-- Top Right -->
-            <path d="M416 70c14 0 14 24 0 24s-14-24 0-24z"/>
-            <path d="M392 100c0-14 24-14 24 0s-24 14-24 0z"/>
-            <path d="M428 108c-10-10 10-30 20-20s-10 30-20 20z"/>
+            <path d="M384 98 L396 130 L372 130 Z"/>
+            <path d="M354 128 L386 140 L386 116 Z"/>
+            <path d="M414 128 L382 116 L382 140 Z"/>
 
             <!-- Bottom Left -->
-            <path d="M96 390c14 0 14 24 0 24s-14-24 0-24z"/>
-            <path d="M72 420c0-14 24-14 24 0s-24 14-24 0z"/>
-            <path d="M108 428c-10-10 10-30 20-20s-10 30-20 20z"/>
+            <path d="M128 354 L140 386 L116 386 Z"/>
+            <path d="M98 384 L130 396 L130 372 Z"/>
+            <path d="M158 384 L126 372 L126 396 Z"/>
 
             <!-- Bottom Right -->
-            <path d="M416 390c14 0 14 24 0 24s-14-24 0-24z"/>
-            <path d="M392 420c0-14 24-14 24 0s-24 14-24 0z"/>
-            <path d="M428 428c-10-10 10-30 20-20s-10 30-20 20z"/>
+            <path d="M384 354 L396 386 L372 386 Z"/>
+            <path d="M354 384 L386 396 L386 372 Z"/>
+            <path d="M414 384 L382 372 L382 396 Z"/>
 
             <!-- Central Body -->
-            <rect x="212" y="176" width="88" height="160" rx="40"/>
+            <rect x="232" y="232" width="48" height="48" rx="6"/>
+
+            <!-- Center Dot -->
+            <circle cx="256" cy="256" r="6"/>
         </svg>
     </div>
 
