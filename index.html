@@ -323,29 +323,38 @@
 <div class="glass-panel p-8 rounded-2xl hover:bg-slate-800 transition-all duration-300 group border border-transparent hover:border-cyan-500/30">
 
     <div class="w-14 h-14 bg-yellow-500/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-yellow-500/20 transition-colors">
-        <!-- Accurate Quadcopter Drone SVG -->
+        <!-- Top View Drone SVG -->
         <svg xmlns="http://www.w3.org/2000/svg"
              viewBox="0 0 512 512"
              class="w-8 h-8 fill-current text-yellow-400">
 
-            <!-- Propellers -->
+            <!-- Arms -->
+            <rect x="244" y="80" width="24" height="160" transform="rotate(45 256 160)"/>
+            <rect x="244" y="80" width="24" height="160" transform="rotate(-45 256 160)"/>
+            <rect x="244" y="272" width="24" height="160" transform="rotate(45 256 352)"/>
+            <rect x="244" y="272" width="24" height="160" transform="rotate(-45 256 352)"/>
+
+            <!-- Rotor Rings -->
             <circle cx="96" cy="96" r="44"/>
             <circle cx="416" cy="96" r="44"/>
             <circle cx="96" cy="416" r="44"/>
             <circle cx="416" cy="416" r="44"/>
 
-            <!-- Arms -->
-            <rect x="120" y="88" width="272" height="16"/>
-            <rect x="120" y="408" width="272" height="16"/>
-            <rect x="88" y="120" width="16" height="272"/>
-            <rect x="408" y="120" width="16" height="272"/>
+            <!-- Propellers -->
+            <path d="M96 80c16 0 16 32 0 32s-16-32 0-32z"/>
+            <path d="M80 96c0-16 32-16 32 0s-32 16-32 0z"/>
+
+            <path d="M416 80c16 0 16 32 0 32s-16-32 0-32z"/>
+            <path d="M400 96c0-16 32-16 32 0s-32 16-32 0z"/>
+
+            <path d="M96 400c16 0 16 32 0 32s-16-32 0-32z"/>
+            <path d="M80 416c0-16 32-16 32 0s-32 16-32 0z"/>
+
+            <path d="M416 400c16 0 16 32 0 32s-16-32 0-32z"/>
+            <path d="M400 416c0-16 32-16 32 0s-32 16-32 0z"/>
 
             <!-- Central Body -->
-            <rect x="176" y="176" width="160" height="120" rx="20"/>
-
-            <!-- Camera -->
-            <rect x="224" y="300" width="64" height="40" rx="10"/>
-            <circle cx="256" cy="320" r="10"/>
+            <rect x="216" y="176" width="80" height="160" rx="30"/>
         </svg>
     </div>
 
