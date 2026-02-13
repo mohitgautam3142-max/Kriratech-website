@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krira Tech | Embedded Systems & Robotics</title>
+
+    <!-- Website Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#0f172a',
+                            primary: '#0ea5e9',
+                            accent: '#06b6d4',
+                            surface: '#1e293b',
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0f172a;
+            color: #f8fafc;
+        }
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #38bdf8, #22d3ee);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .nav-link {
+            position: relative;
+            cursor: pointer;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #22d3ee;
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .nav-link.active {
+            color: #22d3ee;
+        }
+        .nav-link.active::after {
+            width: 100%;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .image-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .image-modal img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        .image-modal .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+            z-index: 101;
+        }
+        /* Added styles for form feedback */
+        .form-feedback {
+            transition: all 0.3s ease;
+        }
+    </style>
+    <base target="_blank">
+<base target="_blank">
+</head>
+<body class="antialiased selection:bg-cyan-500 selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-panel border-b border-white/10 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex items-center gap-3 cursor-pointer" onclick="scrollToSection('home')">
+                    <img src="Kriratech logo.png" alt="Krira Tech Logo" class="w-10 h-10 object-contain rounded-lg shadow-lg shadow-cyan-500/20">
+                    <div>
+                        <span class="font-display font-bold text-xl tracking-tight text-white">Krira Tech</span>
+                        <p class="text-xs text-slate-400 -mt-1">Embedded Systems & Robotics</p>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center gap-6">
+                    <a onclick="scrollToSection('home')" class="nav-link text-white hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</a>
+                    <a onclick="scrollToSection('about')" class="nav-link text-slate-300 hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">About</a>
+                    <a onclick="scrollToSection('services')" class="nav-link text-slate-300 hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Services</a>
+                    <a onclick="scrollToSection('products')" class="nav-link text-slate-300 hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Products</a>
+                    <a onclick="scrollToSection('contact')" class="nav-link text-slate-300 hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Contact</a>
+                    <a onclick="scrollToSection('contact')" class="bg-cyan-500 hover:bg-cyan-600 text-white px-5 py-2 rounded-full text-sm font-medium transition-all shadow-lg shadow-cyan-500/25 ml-4">Get Quote</a>
+                </div>
+                <div class="flex md:hidden items-center gap-3 overflow-x-auto no-scrollbar">
+                    <a onclick="scrollToSection('home')" class="text-white text-xs whitespace-nowrap">Home</a>
+                    <a onclick="scrollToSection('about')" class="text-slate-300 text-xs whitespace-nowrap">About</a>
+                    <a onclick="scrollToSection('services')" class="text-slate-300 text-xs whitespace-nowrap">Services</a>
+                    <a onclick="scrollToSection('products')" class="text-slate-300 text-xs whitespace-nowrap">Products</a>
+                    <a onclick="scrollToSection('contact')" class="text-cyan-400 text-xs whitespace-nowrap">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-pulse-slow"></div>
+            <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl animate-pulse-slow" style="animation-delay: 2s;"></div>
+            <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiLz48L3N2Zz4=')] opacity-20"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="inline-block mb-4 px-4 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-500/10 backdrop-blur-sm">
+                <span class="text-cyan-400 text-sm font-semibold tracking-wide uppercase">Engineering the Future</span>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-display font-bold text-white mb-6 leading-tight">
+                Empowering Automation <br>
+                <span class="gradient-text">Through Tech Ecosystem</span>
+            </h1>
+            <p class="mt-4 max-w-2xl mx-auto text-xl text-slate-300">
+                We Build Machines That Work And Systems That Think. Delivering reliable, scalable, and innovative technology solutions across industries.
+            </p>
+            <div class="mt-10 flex flex-col sm:flex-row justify-center gap-4">
+                <a onclick="scrollToSection('products')" class="px-8 py-4 bg-cyan-500 hover:bg-cyan-600 text-white rounded-full font-semibold transition-all shadow-lg shadow-cyan-500/25 flex items-center justify-center gap-2 cursor-pointer">
+                    View Products <i class="fas fa-arrow-right"></i>
+                </a>
+                <a onclick="scrollToSection('contact')" class="px-8 py-4 bg-slate-800 hover:bg-slate-700 text-white border border-slate-600 rounded-full font-semibold transition-all flex items-center justify-center cursor-pointer">
+                    Get In Touch
+                </a>
+            </div>
+            
+            <div class="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 border-t border-white/10 pt-10">
+                <div>
+                    <div class="text-3xl font-bold text-white">5+</div>
+                    <div class="text-sm text-slate-400">Years Experience</div>
+                </div>
+                <div>
+                    <div class="text-3xl font-bold text-white">15+</div>
+                    <div class="text-sm text-slate-400">Years CTO Expertise</div>
+                </div>
+                <div>
+                    <div class="text-3xl font-bold text-white">100%</div>
+                    <div class="text-sm text-slate-400">Custom Solutions</div>
+                </div>
+                <div>
+                    <div class="text-3xl font-bold text-white">24/7</div>
+                    <div class="text-sm text-slate-400">Support</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-slate-900 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="relative">
+                    <div class="absolute -inset-4 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-2xl opacity-30 blur-lg"></div>
+                    <div class="relative glass-panel rounded-2xl p-8 border border-white/10">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-slate-800/50 p-4 rounded-xl text-center">
+                                <i class="fas fa-microchip text-3xl text-cyan-400 mb-2"></i>
+                                <div class="text-sm font-semibold">Embedded</div>
+                            </div>
+                            <div class="bg-slate-800/50 p-4 rounded-xl text-center">
+                                <i class="fas fa-robot text-3xl text-purple-400 mb-2"></i>
+                                <div class="text-sm font-semibold">Robotics</div>
+                            </div>
+                            <div class="bg-slate-800/50 p-4 rounded-xl text-center">
+                                <i class="fas fa-wifi text-3xl text-green-400 mb-2"></i>
+                                <div class="text-sm font-semibold">IoT</div>
+                            </div>
+                            <div class="bg-slate-800/50 p-4 rounded-xl text-center">
+                                <i class="fas fa-shield-alt text-3xl text-red-400 mb-2"></i>
+                                <div class="text-sm font-semibold">Safety</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h2 class="text-cyan-400 font-semibold tracking-wide uppercase mb-2">About Us</h2>
+                    <h3 class="text-3xl md:text-4xl font-display font-bold text-white mb-6">Engineering Eco Systems That Matter</h3>
+                    <p class="text-slate-300 mb-6 leading-relaxed">
+                        <strong class="text-white">Krira Tech</strong> is a technology-driven company. For the past 5 years, we have been delivering reliable, scalable, and innovative technology solutions to businesses across industries.
+                    </p>
+                    <p class="text-slate-300 mb-6 leading-relaxed">
+                        Our Technical Team, led by an experienced CTO, brings over 15 years of hands-on expertise across a wide range of technologies, platforms, and industries.
+                    </p>
+                    <p class="text-slate-300 mb-8 leading-relaxed">
+                        We build systems that think, respond, and adapt. From distributed control systems to IoT-enabled devices and RFID-based automation, we transform ideas into functional systems.
+                    </p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-4">
+                            <div class="w-6 h-6 rounded-full bg-cyan-500/20 flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fas fa-check text-xs text-cyan-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold">Industry-Focused Approach</h4>
+                                <p class="text-sm text-slate-400">We understand real-world constraints and design systems that work in actual operating conditions.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-6 h-6 rounded-full bg-cyan-500/20 flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fas fa-check text-xs text-cyan-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold">Scalable & Future-Ready</h4>
+                                <p class="text-sm text-slate-400">Our solutions grow with your needs without starting from scratch.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 bg-slate-800/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-cyan-400 font-semibold tracking-wide uppercase mb-2">Our Expertise</h2>
+                <h3 class="text-3xl md:text-4xl font-display font-bold text-white">Services</h3>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="glass-panel p-8 rounded-2xl hover:bg-slate-800 transition-all duration-300 group border border-transparent hover:border-cyan-500/30">
+                    <div class="w-14 h-14 bg-blue-500/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-blue-500/20 transition-colors">
+                        <i class="fas fa-robot text-2xl text-blue-400"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">Robotics Development</h4>
+                    <p class="text-slate-400 text-sm mb-4">Warehouse robots, object handling bots, self-balancing units, and RFID-controlled autonomous systems.</p>
+                    <ul class="text-sm text-slate-500 space-y-2">
+                        <li class="flex items-center gap-2"><i class="fas fa-angle-right text-cyan-500"></i> Reduces manual labor</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-angle-right text-cyan-500"></i> 24/7 Operation</li>
+                    </ul>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="glass-panel p-8 rounded-2xl hover:bg-slate-800 transition-all duration-300 group border border-transparent hover:border-cyan-500/30">
+                    <div class="w-14 h-14 bg-purple-500/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-purple-500/20 transition-colors">
+                        <i class="fas fa-network-wired text-2xl text-purple-400"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">IoT Systems</h4>
+                    <p class="text-slate-400 text-sm mb-4">Wi-Fi/Bluetooth dashboards, air quality monitoring, live data logging, and cloud-connected sensors.</p>
+                    <ul class="text-sm text-slate-500 space-y-2">
+                        <li class="flex items-center gap-2"><i class="fas fa-angle-right text-cyan-500"></i> Real-time monitoring</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-angle-right text-cyan-500"></i> Cloud Analytics</li>
+                    </ul>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="glass-panel p-8 rounded-2xl hover:bg-slate-800 transition-all duration-300 group border border-transparent hover:border-cyan-500/30">
+                    <div class="w-14 h-14 bg-red-500/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-red-500/20 transition-colors">
+                        <i class="fas fa-hard-hat text-2xl text-red-400"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">Safety Monitoring</h4>
+                    <p class="text-slate-400 text-sm mb-4">Eye blink safety systems, disturbance alarms, vibration detection, and drowsiness monitoring.</p>
+                    <ul class="text-sm text-slate-500 space-y-2">
+                        <li class="flex items-center gap-2"><i class="fas fa-angle-right text-cyan-500"></i> Prevent accidents</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-angle-right text-cyan-500"></i> Immediate alerts</li>
+                    </ul>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="glass-panel p-8 rounded-2xl hover:bg-slate-800 transition-all duration-300 group border border-transparent hover:border-cyan-500/30">
+                    <div class="w-14 h-14 bg-green-500/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-green-500/20 transition-colors">
+                        <i class="fas fa-microchip text-2xl text-green-400"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">Product Prototyping</h4>
+                    <p class="text-slate-400 text-sm mb-4">End-to-end hardware development from concept validation to functional prototypes and PCB design.</p>
+                    <ul class="text-sm text-slate-500 space-y-2">
+                        <li class="flex items-center gap-2"><i class="fas fa-angle-right text-cyan-500"></i> Rapid development</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-angle-right text-cyan-500"></i> Cost-effective POC</li>
+                    </ul>
+                </div>
+
+                <!-- Service 5: Drone -->
+                <div class="glass-panel p-8 rounded-2xl hover:bg-slate-800 transition-all duration-300 group border border-transparent hover:border-cyan-500/30">
+                    <div class="w-14 h-14 bg-yellow-500/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-yellow-500/20 transition-colors">
+                        <img src="drone.jpeg" alt="Drone Icon" class="w-12 h-12 object-contain"/>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">Drone Services</h4>
+                    <p class="text-slate-400 text-sm mb-4">Aerial surveillance, industrial inspection, mapping, surveying, and real-time video transmission.</p>
+                    <ul class="text-sm text-slate-500 space-y-2">
+                        <li class="flex items-center gap-2"><i class="fas fa-angle-right text-cyan-500"></i> Aerial Imaging</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-angle-right text-cyan-500"></i> Hazardous Area Access</li>
+                    </ul>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="glass-panel p-8 rounded-2xl hover:bg-slate-800 transition-all duration-300 group border border-transparent hover:border-cyan-500/30">
+                    <div class="w-14 h-14 bg-indigo-500/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-indigo-500/20 transition-colors">
+                        <i class="fas fa-code text-2xl text-indigo-400"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">Software & Web Dev</h4>
+                    <p class="text-slate-400 text-sm mb-4">Custom software, enterprise apps, system integration, and responsive website development.</p>
+                    <ul class="text-sm text-slate-500 space-y-2">
+                        <li class="flex items-center gap-2"><i class="fas fa-angle-right text-cyan-500"></i> Business Efficiency</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-angle-right text-cyan-500"></i> Scalable Solutions</li>
+                    </ul>
+                </div>
+
+                 <!-- Service 7 -->
+                 <div class="glass-panel p-8 rounded-2xl hover:bg-slate-800 transition-all duration-300 group border border-transparent hover:border-cyan-500/30">
+                    <div class="w-14 h-14 bg-pink-500/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-pink-500/20 transition-colors">
+                        <i class="fas fa-mobile-alt text-2xl text-pink-400"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">Mobile App Dev</h4>
+                    <p class="text-slate-400 text-sm mb-4">Android & iOS applications, cross-platform solutions, and IoT-connected mobile software.</p>
+                    <ul class="text-sm text-slate-500 space-y-2">
+                        <li class="flex items-center gap-2"><i class="fas fa-angle-right text-cyan-500"></i> Customer Engagement</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-angle-right text-cyan-500"></i> Real-time Access</li>
+                    </ul>
+                </div>
+
+                 <!-- Service 8: Battery -->
+                 <div class="glass-panel p-8 rounded-2xl hover:bg-slate-800 transition-all duration-300 group border border-transparent hover:border-cyan-500/30">
+                    <div class="w-14 h-14 bg-pink-500/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-pink-500/20 transition-colors">
+                        <i class="fas fa-battery-full text-2xl text-pink-400"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3"> Battery</h4>
+                    <p class="text-slate-400 text-sm mb-4">Lithium ion battery, Inverter battery, E-rickshaw battery</p>
+                    <ul class="text-sm text-slate-500 space-y-2">
+                        <li class="flex items-center gap-2"><i class="fas fa-angle-right text-cyan-500"></i> Customize Battery</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-angle-right text-cyan-500"></i> Battery solutions</li>
+                    </ul>
+                </div>
+
+                 <!-- Service 9 -->
+                 <div class="glass-panel p-8 rounded-2xl hover:bg-slate-800 transition-all duration-300 group border border-transparent hover:border-cyan-500/30 md:col-span-2 lg:col-span-1">
+                    <div class="w-14 h-14 bg-orange-500/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-orange-500/20 transition-colors">
+                        <i class="fas fa-graduation-cap text-2xl text-orange-400"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">Training & Dev</h4>
+                    <p class="text-slate-400 text-sm mb-4">Technical training programs, AI & automation training, and hands-on project-based learning.</p>
+                    <ul class="text-sm text-slate-500 space-y-2">
+                        <li class="flex items-center gap-2"><i class="fas fa-angle-right text-cyan-500"></i> Skill Enhancement</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-angle-right text-cyan-500"></i> Corporate Training</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="py-24 bg-slate-900 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-blue-900/20 to-transparent pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-cyan-400 font-semibold tracking-wide uppercase mb-2">Our Hardware</h2>
+                <h3 class="text-3xl md:text-4xl font-display font-bold text-white">Product & IoT Solutions</h3>
+                <p class="mt-4 text-slate-400 max-w-2xl mx-auto">Explore our range of intelligent monitoring and control devices designed for industrial and commercial applications.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- NEW PRODUCT: Air Sterilizer Machine with PDFs -->
+                <div class="group relative bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-cyan-500/50 transition-all duration-300 hover:-translate-y-2">
+                    <div class="h-48 bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors"></div>
+                        <img src="Air sterilizer machine.jpg" alt="Air Sterilizer Machine" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity">
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold text-white mb-2">Air Sterilizer Machine</h4>
+                        <p class="text-slate-400 text-sm mb-4">An advanced air sterilization solution designed to eliminate airborne pathogens, allergens, and pollutants using multi-stage purification technology.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-slate-700 rounded text-xs text-slate-300">UV-C</span>
+                            <span class="px-2 py-1 bg-slate-700 rounded text-xs text-slate-300">HEPA</span>
+                            <span class="px-2 py-1 bg-slate-700 rounded text-xs text-slate-300">IoT</span>
+                        </div>
+                        <!-- PDF Downloads for Air Sterilizer -->
+                        <div class="mt-3 pt-3 border-t border-white/10 space-y-2 mb-4">
+                            <p class="text-xs text-slate-500 uppercase font-semibold">Download Brochures:</p>
+                            <a href="Industrial Air Sterilization system.pdf" download class="flex items-center gap-2 text-xs text-cyan-400 hover:text-cyan-300 transition-colors">
+                                <i class="fas fa-file-pdf"></i> Industrial Air Sterilization
+                            </a>
+                            <a href="Krira Tech Air Sterilization a Healthier Life.pdf" download class="flex items-center gap-2 text-xs text-cyan-400 hover:text-cyan-300 transition-colors">
+                                <i class="fas fa-file-pdf"></i> A Healthier Life
+                            </a>
+                        </div>
+                        <button onclick="openModal('sterilizer_machine')" class="w-full py-2 border border-cyan-500 text-cyan-400 rounded-lg hover:bg-cyan-500 hover:text-white transition-colors text-sm font-semibold">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Outdoor Air Sterilizer & AQI IoT System Integration -->
+                <div class="group relative bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-emerald-500/50 transition-all duration-300 hover:-translate-y-2">
+                    <div class="h-48 bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors"></div>
+                        <img src="AQI.jpg" alt="Outdoor Air Sterilizer & AQI IoT System" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity">
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold text-white mb-2">Outdoor Air Sterilizer & AQI IoT System Integration</h4>
+                        <p class="text-slate-400 text-sm mb-4 h-10">Complete outdoor air purification with integrated AQI monitoring and IoT connectivity for smart cities.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-slate-700 rounded text-xs text-slate-300">Outdoor</span>
+                            <span class="px-2 py-1 bg-slate-700 rounded text-xs text-slate-300">AQI</span>
+                            <span class="px-2 py-1 bg-slate-700 rounded text-xs text-slate-300">IoT</span>
+                        </div>
+                        <button onclick="openImageModal('AQI.jpg')" class="w-full py-2 border border-emerald-500 text-emerald-400 rounded-lg hover:bg-emerald-500 hover:text-white transition-colors text-sm font-semibold">View Details</button>
+                    </div>
+                </div>
+
+                <!-- AQI Monitoring Device - WITH Air Quality Index Monitor PDF -->
+                <div class="group relative bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-teal-500/50 transition-all duration-300 hover:-translate-y-2">
+                    <div class="h-48 bg-gradient-to-br from-teal-500 to-emerald-600 flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors"></div>
+                        <img src="Aqi monitor.jpg" alt="AQI Monitoring Device" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity">
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold text-white mb-2">AQI Monitoring Device</h4>
+                        <p class="text-slate-400 text-sm mb-4">Real-time air quality monitoring with IoT connectivity for environmental analysis.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-slate-700 rounded text-xs text-slate-300">PM2.5</span>
+                            <span class="px-2 py-1 bg-slate-700 rounded text-xs text-slate-300">CO2</span>
+                            <span class="px-2 py-1 bg-slate-700 rounded text-xs text-slate-300">IoT</span>
+                        </div>
+                        <!-- PDF Download for AQI Monitoring Device -->
+                        <div class="mt-3 pt-3 border-t border-white/10 space-y-2 mb-4">
+                            <p class="text-xs text-slate-500 uppercase font-semibold">Download Brochure:</p>
+                            <a href="Air Quality Index Monitor.pdf" download class="flex items-center gap-2 text-xs text-teal-400 hover:text-teal-300 transition-colors">
+                                <i class="fas fa-file-pdf"></i> Air Quality Index Monitor
+                            </a>
+                        </div>
+                        <button onclick="openModal('aqi')" class="w-full py-2 border border-teal-500 text-teal-400 rounded-lg hover:bg-teal-500 hover:text-white transition-colors text-sm font-semibold">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="group relative bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-purple-500/50 transition-all duration-300 hover:-translate-y-2">
+                    <div class="h-48 bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center">
+                        <i class="fas fa-flask text-6xl text-white/80 group-hover:scale-110 transition-transform duration-500"></i>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold text-white mb-2">VOC Tracker</h4>
+                        <p class="text-slate-400 text-sm mb-4 h-10">Volatile Organic Compound detection and tracking system for indoor air quality.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-slate-700 rounded text-xs text-slate-300">Chemical</span>
+                            <span class="px-2 py-1 bg-slate-700 rounded text-xs text-slate-300">Safety</span>
+                        </div>
+                        <button onclick="openModal('voc')" class="w-full py-2 border border-purple-500 text-purple-400 rounded-lg hover:bg-purple-500 hover:text-white transition-colors text-sm font-semibold">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Product 3: Biomass Monitoring with image -->
+                <div class="group relative bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-green-500/50 transition-all duration-300 hover:-translate-y-2">
+                    <div class="h-48 bg-gradient-to-br from-green-500 to-lime-600 flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors"></div>
+                        <img src="Biomass.jpg" alt="Biomass Monitoring" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity">
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold text-white mb-2">Biomass Plant Production Monitoring</h4>
+                        <p class="text-slate-400 text-sm mb-4 h-10">IoT-enabled system for biomass production processes and efficiency tracking.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-slate-700 rounded text-xs text-slate-300">Production</span>
+                            <span class="px-2 py-1 bg-slate-700 rounded text-xs text-slate-300">Analytics</span>
+                        </div>
+                        <button onclick="openModal('biomass')" class="w-full py-2 border border-green-500 text-green-400 rounded-lg hover:bg-green-500 hover:text-white transition-colors text-sm font-semibold">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="group relative bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-orange-500/50 transition-all duration-300 hover:-translate-y-2">
+                    <div class="h-48 bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center">
+                        <i class="fas fa-cogs text-6xl text-white/80 group-hover:scale-110 transition-transform duration-500"></i>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold text-white mb-2">Machine Monitoring</h4>
+                        <p class="text-slate-400 text-sm mb-4 h-10">Comprehensive monitoring for motors, conveyors, and hoppers with IoT connectivity.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-slate-700 rounded text-xs text-slate-300">Industrial</span>
+                            <span class="px-2 py-1 bg-slate-700 rounded text-xs text-slate-300">Predictive</span>
+                        </div>
+                        <button onclick="openModal('machine')" class="w-full py-2 border border-orange-500 text-orange-400 rounded-lg hover:bg-orange-500 hover:text-white transition-colors text-sm font-semibold">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="group relative bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-cyan-500/50 transition-all duration-300 hover:-translate-y-2">
+                    <div class="h-48 bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center">
+                        <i class="fas fa-shield-virus text-6xl text-white/80 group-hover:scale-110 transition-transform duration-500"></i>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold text-white mb-2">Air Sterilizer Controller</h4>
+                        <p class="text-slate-400 text-sm mb-4 h-10">Smart controller for air sterilization systems with automated operation.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-slate-700 rounded text-xs text-slate-300">UV-C</span>
+                            <span class="px-2 py-1 bg-slate-700 rounded text-xs text-slate-300">HEPA</span>
+                        </div>
+                        <button onclick="openModal('sterilizer')" class="w-full py-2 border border-cyan-500 text-cyan-400 rounded-lg hover:bg-cyan-500 hover:text-white transition-colors text-sm font-semibold">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Product 5 : Battery System - UPDATED IMAGE STYLE -->
+<div class="group relative bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-cyan-500/50 transition-all duration-300 hover:-translate-y-2">
+    
+    <!-- Top Image Section - MATCHED WITH BIOMASS STYLE -->
+    <div class="h-48 bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center relative overflow-hidden">
+        
+        <!-- Overlay Effect -->
+        <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors"></div>
+
+        <!-- Battery Image -->
+        <img src="battery2.jpeg" 
+             alt="Battery System" 
+             class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity">
+        
+    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold text-white mb-2">Smart Battery System</h4>
+                        <p class="text-slate-400 text-sm mb-4 h-12">
+                            Advanced lithium battery management system with real-time monitoring, safety protection, and high efficiency output.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-slate-700 rounded text-xs text-slate-300">Li-ion</span>
+                            <span class="px-2 py-1 bg-slate-700 rounded text-xs text-slate-300">BMS</span>
+                            <span class="px-2 py-1 bg-slate-700 rounded text-xs text-slate-300">Overcharge Protection</span>
+                        </div>
+                        <button onclick="openModal('battery')" class="w-full py-2 border border-cyan-500 text-cyan-400 rounded-lg hover:bg-cyan-500 hover:text-white transition-colors text-sm font-semibold">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Product 7 -->
+                <div class="group relative bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-pink-500/50 transition-all duration-300 hover:-translate-y-2">
+                    <div class="h-48 bg-gradient-to-br from-pink-500 to-rose-600 flex items-center justify-center">
+                        <i class="fas fa-walking text-6xl text-white/80 group-hover:scale-110 transition-transform duration-500"></i>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold text-white mb-2">Entry Exit Counter</h4>
+                        <p class="text-slate-400 text-sm mb-4 h-10">Automated people counting system with real-time display for tracking.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-slate-700 rounded text-xs text-slate-300">People</span>
+                            <span class="px-2 py-1 bg-slate-700 rounded text-xs text-slate-300">Display</span>
+                        </div>
+                        <button onclick="openModal('counter')" class="w-full py-2 border border-pink-500 text-pink-400 rounded-lg hover:bg-pink-500 hover:text-white transition-colors text-sm font-semibold">View Details</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-slate-800/50 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-16">
+                <div>
+                    <h2 class="text-cyan-400 font-semibold tracking-wide uppercase mb-2">Contact Us</h2>
+                    <h3 class="text-3xl md:text-4xl font-display font-bold text-white mb-6">Ready to Build Your Solution?</h3>
+                    <p class="text-slate-300 mb-8">
+                        Let's discuss how we can help automate your operations with custom embedded systems. Reach out to us for pricing, customization, and bulk orders.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-slate-700 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-map-marker-alt text-cyan-400 text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold">Address</h4>
+                                <p class="text-slate-400 text-sm">Meher Darbar House, Jai Durga Society 3,<br>Manish Nagar, Nagpur - 440015</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-slate-700 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-phone-alt text-cyan-400 text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold">Phone</h4>
+                                <p class="text-slate-400 text-sm">+91 89563 61121</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-slate-700 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-envelope text-cyan-400 text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold">Email</h4>
+                                <p class="text-slate-400 text-sm">kriratech@gmail.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MODIFIED CONTACT FORM -->
+                <div class="glass-panel p-8 rounded-2xl border border-white/10">
+                    <form id="contactForm" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-slate-300 mb-2">Name</label>
+                                <input type="text" name="name" class="w-full bg-slate-900/50 border border-slate-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500 transition-colors" placeholder="Your Name" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-slate-300 mb-2">Email</label>
+                                <input type="email" name="email" class="w-full bg-slate-900/50 border border-slate-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500 transition-colors" placeholder="your@email.com" required>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-2">Contact No</label>
+                            <input type="tel" name="phone" class="w-full bg-slate-900/50 border border-slate-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500 transition-colors" placeholder="Your Contact Number" required>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-2">Subject</label>
+                            <select name="subject" class="w-full bg-slate-900/50 border border-slate-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500 transition-colors">
+                                <option>General Inquiry</option>
+                                <option>Product Information</option>
+                                <option>Custom Solution</option>
+                                <option>Software Inquiry</option>
+                                <option>Prototype Inquiry</option>
+                                <option>Support</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-2">Message</label>
+                            <textarea name="message" rows="4" class="w-full bg-slate-900/50 border border-slate-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500 transition-colors" placeholder="How can we help you?" required></textarea>
+                        </div>
+
+                        <button type="submit" id="submitBtn" class="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-bold py-4 rounded-lg transition-all shadow-lg shadow-cyan-500/25 flex items-center justify-center gap-2">
+                            <span>Send Message</span>
+                            <i id="btnIcon" class="fas fa-paper-plane"></i>
+                        </button>
+
+                        <!-- Feedback Message Container -->
+                        <div id="formFeedback" class="hidden mt-4 p-4 rounded-lg text-center text-sm font-semibold"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 border-t border-white/10 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center gap-3 mb-4">
+                        <img src="Kriratech logo.png" alt="Krira Tech Logo" class="w-8 h-8 object-contain rounded">
+                        <span class="font-display font-bold text-xl text-white">Krira Tech</span>
+                    </div>
+                    <p class="text-slate-400 text-sm leading-relaxed max-w-sm">
+                        GST no.27AQPPB6208A1Z8
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm text-slate-400">
+                        <li><a onclick="scrollToSection('home')" class="hover:text-cyan-400 transition-colors cursor-pointer">Home</a></li>
+                        <li><a onclick="scrollToSection('about')" class="hover:text-cyan-400 transition-colors cursor-pointer">About Us</a></li>
+                        <li><a onclick="scrollToSection('services')" class="hover:text-cyan-400 transition-colors cursor-pointer">Services</a></li>
+                        <li><a onclick="scrollToSection('products')" class="hover:text-cyan-400 transition-colors cursor-pointer">Products</a></li>
+                        <li><a onclick="scrollToSection('contact')" class="hover:text-cyan-400 transition-colors cursor-pointer">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Our Expertise</h4>
+                    <ul class="space-y-2 text-sm text-slate-400">
+                        <li>Embedded Systems</li>
+                        <li>Robotics Development</li>
+                        <li>IoT Solutions</li>
+                        <li>RFID Automation</li>
+                        <li>Safety Hardware</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-slate-500 text-sm">&copy; 2025 Krira Tech. All rights reserved.</p>
+                <div class="flex gap-4">
+                    <a href="#" class="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-cyan-500 hover:text-white transition-all"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-cyan-500 hover:text-white transition-all"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-cyan-500 hover:text-white transition-all"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Product Modal Overlay -->
+    <div id="productModal" class="fixed inset-0 z-[60] hidden overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+            <div class="fixed inset-0 bg-slate-900/90 backdrop-blur-sm transition-opacity" aria-hidden="true" onclick="closeModal()"></div>
+            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+            <div class="inline-block align-bottom glass-panel rounded-2xl text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-2xl sm:w-full border border-white/10">
+                <div class="px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                    <div class="sm:flex sm:items-start">
+                        <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-full">
+                            <h3 class="text-2xl leading-6 font-bold text-white mb-4" id="modal-title">Product Title</h3>
+                            <div class="mt-2">
+                                <p class="text-sm text-slate-300 mb-4" id="modal-desc">Description goes here.</p>
+                                <div class="bg-slate-800/50 rounded-lg p-4 border border-white/5">
+                                    <h4 class="text-cyan-400 font-semibold text-sm mb-2 uppercase">Key Features</h4>
+                                    <ul class="text-sm text-slate-300 space-y-2 list-disc list-inside" id="modal-features">
+                                    </ul>
+                                </div>
+                                <div class="mt-4">
+                                    <h4 class="text-cyan-400 font-semibold text-sm mb-2 uppercase">Applications</h4>
+                                    <div class="flex flex-wrap gap-2" id="modal-tags">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-slate-800/50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse border-t border-white/5">
+                    <a onclick="closeModal(); scrollToSection('contact');" class="w-full inline-flex justify-center rounded-lg border border-transparent shadow-sm px-4 py-2 bg-cyan-600 text-base font-medium text-white hover:bg-cyan-700 focus:outline-none sm:ml-3 sm:w-auto sm:text-sm cursor-pointer">
+                        Inquiry Now
+                    </a>
+                    <button type="button" onclick="closeModal()" class="mt-3 w-full inline-flex justify-center rounded-lg border border-slate-600 shadow-sm px-4 py-2 bg-transparent text-base font-medium text-slate-300 hover:text-white hover:bg-slate-700 focus:outline-none sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Full Screen Image Modal for AQI Product -->
+    <div id="imageModal" class="image-modal hidden" onclick="closeImageModal()">
+        <span class="close-btn">&times;</span>
+        <img id="fullImage" src="" alt="Product Full View">
+    </div>
+
+    <script>
+        // Smooth scroll function
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                const offsetTop = element.offsetTop - 80;
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        // Product Data - Added Air Sterilizer Machine
+        const products = {
+            'sterilizer_machine': {
+                title: 'Air Sterilizer Machine',
+                desc: 'An advanced air sterilization solution designed to eliminate airborne pathogens, allergens, and pollutants using multi-stage purification technology. Continuously monitors indoor air quality and automatically optimizes sterilization performance for safe, clean, and healthy environments.',
+                features: [
+                    'High-efficiency air sterilization using UV-C and advanced filtration',
+                    'Real-time air quality monitoring (PM, VOCs, microbes)',
+                    'Automatic adjustment of sterilization intensity',
+                    'Continuous and scheduled operation modes',
+                    'Low-noise, energy-efficient operation',
+                    'Smart sensor integration for adaptive control'
+                ],
+                tags: ['Hospitals', 'Offices', 'Schools', 'Hotels', 'Industrial']
+            },
+            'aqi': {
+                title: 'AQI Monitoring Device',
+                desc: 'An advanced IoT-enabled system designed to measure and track air quality in real-time. It monitors critical parameters including particulate matter (PM2.5, PM10), CO2 levels, temperature, and humidity.',
+                features: [
+                    'Real-time monitoring of PM2.5, PM10, CO2, temperature, and humidity',
+                    'Wi-Fi/Bluetooth IoT connectivity for remote access',
+                    'Cloud-based data logging and historical analysis',
+                    'LCD display for instant readings',
+                    'Customizable alert thresholds with notifications'
+                ],
+                tags: ['Smart Homes', 'Offices', 'Schools', 'Hospitals', 'Industrial']
+            },
+            'voc': {
+                title: 'VOC Tracker',
+                desc: 'A specialized monitoring system designed to detect and track Volatile Organic Compounds (VOCs) in indoor air environments. Perfect for industrial facilities and laboratories.',
+                features: [
+                    'High-precision VOC detection (ppb level accuracy)',
+                    'Real-time monitoring with trend analysis',
+                    'Cloud-based data logging',
+                    'Automatic alerts when levels exceed safe thresholds',
+                    'Integration with ventilation systems'
+                ],
+                tags: ['Paint Manufacturing', 'Labs', 'Pharmaceutical', 'Offices']
+            },
+            'biomass': {
+                title: 'Biomass Production Monitoring Device IoT',
+                desc: 'An advanced IoT-enabled system designed to monitor and optimize biomass production processes in real-time. Tracks temperature, moisture, pressure, and production rates.',
+                features: [
+                    'Real-time monitoring of temperature, moisture, and pressure',
+                    'Production rate tracking and efficiency analysis',
+                    'IoT cloud connectivity for remote access',
+                    'Automated alerts for process deviations',
+                    'Historical data logging and trend analysis'
+                ],
+                tags: ['Biogas Plants', 'Pellet Manufacturing', 'Composting', 'Renewable Energy']
+            },
+            'machine': {
+                title: 'Machine Monitoring Device IoT',
+                desc: 'A comprehensive IoT solution designed to monitor critical parameters of industrial machinery including motors, conveyors, containers, and hoppers.',
+                features: [
+                    'Tracks performance metrics and detects anomalies',
+                    'Predictive maintenance insights',
+                    'Cloud connectivity for remote monitoring',
+                    'Automated alerts for malfunctions',
+                    'Data logging for efficiency analysis'
+                ],
+                tags: ['Manufacturing', 'Material Handling', 'Production Lines']
+            },
+            'sterilizer': {
+                title: 'Air Sterilizer/Purifier Machine Controller',
+                desc: 'An intelligent automation system that manages UV sterilization, HEPA filtration, and air purification processes. Monitors air quality and adjusts purification intensity automatically.',
+                features: [
+                    'Manages UV sterilization and HEPA filtration',
+                    'Automatic adjustment based on real-time data',
+                    'Perfect for hospitals, labs, and clean rooms',
+                    'Smart sensor integration',
+                    'Automated operation cycles'
+                ],
+                tags: ['Hospitals', 'Laboratories', 'Clean Rooms', 'Offices']
+            },
+            'battery': {
+                title: 'Smart Battery System',
+                desc: 'Advanced lithium battery management system with real-time monitoring, safety protection, and high efficiency output.',
+                features: [
+                    'Real-time voltage and current monitoring',
+                    'Overcharge and deep discharge protection',
+                    'Temperature management system',
+                    'High energy density lithium cells',
+                    'Compatible with inverters and E-rickshaws'
+                ],
+                tags: ['Solar', 'Automotive', 'Backup Power', 'Industrial']
+            },
+            'counter': {
+                title: 'Entry Exit Counter Display',
+                desc: 'An automated people tracking system that accurately counts individuals entering and exiting a premises in real-time with a prominent digital display.',
+                features: [
+                    'Sensor-based detection',
+                    'Real-time occupancy display',
+                    'Entry and exit differentiation',
+                    'Ideal for crowd control',
+                    'Compliance with capacity regulations'
+                ],
+                tags: ['Retail', 'Malls', 'Event Venues', 'Public Spaces']
+            }
+        };
+
+        // Product Modal Logic
+        function openModal(productKey) {
+            const product = products[productKey];
+            if (!product) return;
+
+            document.getElementById('modal-title').innerText = product.title;
+            document.getElementById('modal-desc').innerText = product.desc;
+            
+            const featuresList = document.getElementById('modal-features');
+            featuresList.innerHTML = product.features.map(f => `<li>${f}</li>`).join('');
+            
+            const tagsContainer = document.getElementById('modal-tags');
+            tagsContainer.innerHTML = product.tags.map(t => `<span class="px-2 py-1 bg-slate-700 rounded text-xs text-slate-300">${t}</span>`).join('');
+
+            document.getElementById('productModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('productModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Image Modal Logic for AQI Product
+        function openImageModal(imageSrc) {
+            const modal = document.getElementById('imageModal');
+            const img = document.getElementById('fullImage');
+            img.src = imageSrc;
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeImageModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close image modal on Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+                closeImageModal();
+            }
+        });
+
+        // Navbar Scroll Effect and Active Link
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-lg');
+            } else {
+                nav.classList.remove('shadow-lg');
+            }
+
+            // Update active nav link based on scroll position
+            const sections = ['home', 'about', 'services', 'products', 'contact'];
+            const scrollPos = window.scrollY + 100;
+
+            sections.forEach(section => {
+                const element = document.getElementById(section);
+                const navLinks = document.querySelectorAll('.nav-link');
+                
+                if (element && element.offsetTop <= scrollPos && (element.offsetTop + element.offsetHeight) > scrollPos) {
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('onclick') && link.getAttribute('onclick').includes(section)) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        });
+
+        // --- CONTACT FORM HANDLING LOGIC ---
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent default form submission
+
+            const form = e.target;
+            const formData = new FormData(form);
+            const feedbackDiv = document.getElementById('formFeedback');
+            const submitBtn = document.getElementById('submitBtn');
+            const btnIcon = document.getElementById('btnIcon');
+            const btnText = submitBtn.querySelector('span');
+
+            // UI Loading State
+            submitBtn.disabled = true;
+            btnText.innerText = 'Sending...';
+            btnIcon.className = 'fas fa-spinner fa-spin';
+            feedbackDiv.className = 'hidden'; // Hide previous messages
+
+            // Send data to PHP file
+            fetch('send_mail.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                // Reset Button
+                submitBtn.disabled = false;
+                btnText.innerText = 'Send Message';
+                btnIcon.className = 'fas fa-paper-plane';
+
+                if (data.trim() === 'success') {
+                    // Success State
+                    feedbackDiv.className = 'mt-4 p-4 rounded-lg text-center text-sm font-semibold bg-green-500/20 text-green-400 border border-green-500/30';
+                    feedbackDiv.innerHTML = '<i class="fas fa-check-circle mr-2"></i> Thank you! Your message has been sent successfully. We will contact you shortly.';
+                    form.reset(); // Clear the form
+                } else {
+                    // Error State
+                    feedbackDiv.className = 'mt-4 p-4 rounded-lg text-center text-sm font-semibold bg-red-500/20 text-red-400 border border-red-500/30';
+                    feedbackDiv.innerHTML = '<i class="fas fa-exclamation-circle mr-2"></i> Oops! Something went wrong. Please try again later.';
+                }
+                feedbackDiv.classList.remove('hidden');
+            })
+            .catch(error => {
+                // Network/Server Error State
+                submitBtn.disabled = false;
+                btnText.innerText = 'Send Message';
+                btnIcon.className = 'fas fa-paper-plane';
+                
+                feedbackDiv.className = 'mt-4 p-4 rounded-lg text-center text-sm font-semibold bg-red-500/20 text-red-400 border border-red-500/30';
+                feedbackDiv.innerHTML = '<i class="fas fa-exclamation-circle mr-2"></i> Network error. Please check your connection.';
+                feedbackDiv.classList.remove('hidden');
+                console.error('Error:', error);
+            });
+        });
+    </script>
+</body>
+</html>
