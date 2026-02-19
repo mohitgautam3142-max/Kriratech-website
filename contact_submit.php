@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
        1️⃣ SEND MAIL TO ADMIN (YOU)
     =============================== */
 
-    $admin_email = "gajendra@kriratech.com";  // Company email
+    $admin_email = "gajendra@kriratech.com";  // Company email - CHANGE THIS TO YOUR EMAIL
 
     $admin_subject = "New Website Inquiry - " . $subject;
 
@@ -73,20 +73,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     /* ===============================
-       3️⃣ REDIRECT BACK TO WEBSITE
+       3️⃣ RETURN JSON RESPONSE FOR AJAX
     =============================== */
 
+    header('Content-Type: application/json');
+    
     if($mail_to_admin && $mail_to_user) {
-        header("Location: index.html?contact=success#contact");
-        exit();
+        echo json_encode([
+            'success' => true,
+            'message' => 'Message sent successfully!'
+        ]);
     } else {
-        header("Location: index.html?contact=error#contact");
-        exit();
+        echo json_encode([
+            'success' => false,
+            'message' => 'There was an error sending your message. Please try again or contact us directly.'
+        ]);
     }
+    exit();
 
 } else {
     // If accessed directly without POST data
-    header("Location: index.html#contact");
+    header('Location: index.html#contact');
     exit();
 }
 
