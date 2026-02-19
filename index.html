@@ -136,6 +136,42 @@
             background: linear-gradient(135deg, #0ea5e9, #06b6d4);
             color: white;
         }
+        /* Popup Animation */
+        @keyframes popupIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9) translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+        .popup-animate {
+            animation: popupIn 0.3s ease-out forwards;
+        }
+        /* Button loading state */
+        .btn-loading {
+            position: relative;
+            color: transparent !important;
+        }
+        .btn-loading::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            top: 50%;
+            left: 50%;
+            margin-left: -10px;
+            margin-top: -10px;
+            border: 2px solid #ffffff;
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spinner 0.8s linear infinite;
+        }
+        @keyframes spinner {
+            to { transform: rotate(360deg); }
+        }
     </style>
     <base target="_blank">
 <base target="_blank">
@@ -688,11 +724,11 @@
                     <h4 class="text-2xl font-bold text-white mb-2">Apply Now</h4>
                     <p class="text-slate-400 text-sm mb-6">Fill in your details and we'll get back to you soon.</p>
                     
-                    <form id="careerForm" action="career_submit.php" method="POST" class="space-y-6">
+                    <form id="careerForm" class="space-y-6">
                         <!-- Name -->
                         <div>
                             <label class="block text-sm font-medium text-slate-300 mb-2">Full Name *</label>
-                            <input type="text" name="name" required
+                            <input type="text" name="name" id="careerName" required
                                 class="w-full bg-slate-900/50 border border-slate-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500 transition-colors" 
                                 placeholder="Enter your full name">
                         </div>
@@ -700,7 +736,7 @@
                         <!-- Email -->
                         <div>
                             <label class="block text-sm font-medium text-slate-300 mb-2">Email Address *</label>
-                            <input type="email" name="email" required
+                            <input type="email" name="email" id="careerEmail" required
                                 class="w-full bg-slate-900/50 border border-slate-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500 transition-colors" 
                                 placeholder="your@email.com">
                         </div>
@@ -708,7 +744,7 @@
                         <!-- Phone -->
                         <div>
                             <label class="block text-sm font-medium text-slate-300 mb-2">Contact Number *</label>
-                            <input type="tel" name="phone" required
+                            <input type="tel" name="phone" id="careerPhone" required
                                 class="w-full bg-slate-900/50 border border-slate-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500 transition-colors" 
                                 placeholder="+91 12345 67890">
                         </div>
@@ -798,13 +834,13 @@
                         <!-- Skills/Resume -->
                         <div>
                             <label class="block text-sm font-medium text-slate-300 mb-2">Skills & Qualifications</label>
-                            <textarea name="skills" rows="3" 
+                            <textarea name="skills" id="careerSkills" rows="3" 
                                 class="w-full bg-slate-900/50 border border-slate-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500 transition-colors" 
                                 placeholder="Briefly describe your skills, qualifications, and why you'd be a great fit..."></textarea>
                         </div>
 
                         <!-- Submit Button -->
-                        <button type="submit" 
+                        <button type="submit" id="careerSubmitBtn"
                             class="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-bold py-4 rounded-lg transition-all shadow-lg shadow-cyan-500/25 flex items-center justify-center gap-2">
                             <i class="fas fa-paper-plane"></i>
                             Submit Application
@@ -860,30 +896,30 @@
                 </div>
 
                 <div class="glass-panel p-8 rounded-2xl border border-white/10">
-                    <form action="contact_submit.php" method="POST" class="space-y-6">
+                    <form id="contactForm" class="space-y-6">
                         <div class="grid md:grid-cols-2 gap-6">
                             <div>
-                                <label class="block text-sm font-medium text-slate-300 mb-2">Name</label>
-                                <input type="text" name="name"
+                                <label class="block text-sm font-medium text-slate-300 mb-2">Name *</label>
+                                <input type="text" name="name" id="contactName" required
                                     class="w-full bg-slate-900/50 border border-slate-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500 transition-colors" 
-                                    placeholder="Your Name" required>
+                                    placeholder="Your Name">
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-slate-300 mb-2">Email</label>
-                                <input type="email" name="email"
+                                <label class="block text-sm font-medium text-slate-300 mb-2">Email *</label>
+                                <input type="email" name="email" id="contactEmail" required
                                     class="w-full bg-slate-900/50 border border-slate-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500 transition-colors" 
-                                    placeholder="your@email.com" required>
+                                    placeholder="your@email.com">
                             </div>
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-slate-300 mb-2">Contact No</label>
-                            <input type="tel" name="phone"
+                            <label class="block text-sm font-medium text-slate-300 mb-2">Contact No *</label>
+                            <input type="tel" name="phone" id="contactPhone" required
                                 class="w-full bg-slate-900/50 border border-slate-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500 transition-colors" 
-                                placeholder="Your Contact Number" required>
+                                placeholder="Your Contact Number">
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-slate-300 mb-2">Subject</label>
-                            <select name="subject" class="w-full bg-slate-900/50 border border-slate-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500 transition-colors">
+                            <select name="subject" id="contactSubject" class="w-full bg-slate-900/50 border border-slate-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500 transition-colors">
                                 <option>General Inquiry</option>
                                 <option>Product Information</option>
                                 <option>Custom Solution</option>
@@ -893,12 +929,12 @@
                             </select>
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-slate-300 mb-2">Message</label>
-                            <textarea name="message" rows="4" 
+                            <label class="block text-sm font-medium text-slate-300 mb-2">Message *</label>
+                            <textarea name="message" id="contactMessage" rows="4" required
                                 class="w-full bg-slate-900/50 border border-slate-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500 transition-colors" 
-                                placeholder="How can we help you?" required></textarea>
+                                placeholder="How can we help you?"></textarea>
                         </div>
-                        <button type="submit" 
+                        <button type="submit" id="contactSubmitBtn"
                             class="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-bold py-4 rounded-lg transition-all shadow-lg shadow-cyan-500/25">
                             Send Message
                         </button>
@@ -998,20 +1034,24 @@
         <img id="fullImage" src="" alt="Product Full View">
     </div>
 
-    <!-- Success Modal -->
-    <div id="successModal" class="fixed inset-0 z-[70] hidden overflow-y-auto">
-        <div class="flex items-center justify-center min-h-screen px-4">
-            <div class="fixed inset-0 bg-slate-900/90 backdrop-blur-sm" onclick="closeSuccessModal()"></div>
-            <div class="relative glass-panel rounded-2xl p-8 max-w-md w-full text-center border border-white/10">
-                <div class="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <i class="fas fa-check text-2xl text-green-400"></i>
-                </div>
-                <h3 class="text-2xl font-bold text-white mb-2" id="successTitle">Thank You!</h3>
-                <p class="text-slate-300 mb-6" id="successMessage">Your application has been submitted successfully. We will contact you shortly.</p>
-                <button onclick="closeSuccessModal()" class="bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-2 rounded-lg transition-colors">
-                    Close
-                </button>
+    <!-- Success Popup Modal -->
+    <div id="successPopup" class="fixed inset-0 z-[100] hidden flex items-center justify-center px-4">
+        <div class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm" onclick="closeSuccessPopup()"></div>
+        <div class="relative glass-panel rounded-2xl p-8 max-w-md w-full text-center border border-white/10 popup-animate">
+            <div class="w-20 h-20 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg shadow-green-500/30">
+                <i class="fas fa-check text-3xl text-white"></i>
             </div>
+            <h3 class="text-2xl font-bold text-white mb-3" id="popupTitle">Thank You!</h3>
+            <p class="text-slate-300 mb-6 leading-relaxed" id="popupMessage">Your submission has been received successfully.</p>
+            <div class="bg-slate-800/50 rounded-lg p-4 mb-6 border border-white/5">
+                <p class="text-sm text-slate-400">
+                    <i class="fas fa-info-circle text-cyan-400 mr-2"></i>
+                    Our team will review your submission and get back to you within 24-48 hours.
+                </p>
+            </div>
+            <button onclick="closeSuccessPopup()" class="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-8 py-3 rounded-lg transition-all shadow-lg shadow-cyan-500/25 font-semibold">
+                Got It
+            </button>
         </div>
     </div>
 
@@ -1170,15 +1210,17 @@
             document.body.style.overflow = 'auto';
         }
 
-        // Success Modal
-        function showSuccessModal(title, message) {
-            document.getElementById('successTitle').innerText = title;
-            document.getElementById('successMessage').innerText = message;
-            document.getElementById('successModal').classList.remove('hidden');
+        // Success Popup Functions
+        function showSuccessPopup(title, message) {
+            document.getElementById('popupTitle').innerText = title;
+            document.getElementById('popupMessage').innerText = message;
+            document.getElementById('successPopup').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
         }
 
-        function closeSuccessModal() {
-            document.getElementById('successModal').classList.add('hidden');
+        function closeSuccessPopup() {
+            document.getElementById('successPopup').classList.add('hidden');
+            document.body.style.overflow = 'auto';
         }
 
         // Close modals on Escape key
@@ -1186,7 +1228,7 @@
             if (event.key === 'Escape') {
                 closeModal();
                 closeImageModal();
-                closeSuccessModal();
+                closeSuccessPopup();
             }
         });
 
@@ -1209,6 +1251,78 @@
                 });
                 this.closest('.experience-option').classList.add('selected');
             });
+        });
+
+        // Career Form Submission
+        document.getElementById('careerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('careerSubmitBtn');
+            const originalText = submitBtn.innerHTML;
+            
+            // Show loading state
+            submitBtn.classList.add('btn-loading');
+            submitBtn.disabled = true;
+            
+            // Simulate form submission (2 second delay)
+            setTimeout(() => {
+                // Reset button
+                submitBtn.classList.remove('btn-loading');
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                
+                // Get form values for personalized message
+                const name = document.getElementById('careerName').value;
+                const positionType = document.querySelector('input[name="position_type"]:checked')?.value || 'position';
+                
+                // Show success popup
+                showSuccessPopup(
+                    'Application Submitted Successfully!',
+                    `Thank you, ${name.split(' ')[0]}! Your application for the ${positionType} position has been received. Our HR team will review your profile and contact you if your qualifications match our requirements.`
+                );
+                
+                // Reset form
+                this.reset();
+                document.querySelectorAll('.career-option, .experience-option').forEach(el => {
+                    el.classList.remove('selected');
+                });
+                document.querySelectorAll('.check-indicator').forEach(el => {
+                    el.classList.add('opacity-0');
+                });
+            }, 2000);
+        });
+
+        // Contact Form Submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('contactSubmitBtn');
+            const originalText = submitBtn.innerText;
+            
+            // Show loading state
+            submitBtn.classList.add('btn-loading');
+            submitBtn.disabled = true;
+            
+            // Simulate form submission (2 second delay)
+            setTimeout(() => {
+                // Reset button
+                submitBtn.classList.remove('btn-loading');
+                submitBtn.innerText = originalText;
+                submitBtn.disabled = false;
+                
+                // Get form values for personalized message
+                const name = document.getElementById('contactName').value;
+                const subject = document.getElementById('contactSubject').value;
+                
+                // Show success popup
+                showSuccessPopup(
+                    'Message Sent Successfully!',
+                    `Thank you for reaching out, ${name.split(' ')[0]}! We have received your inquiry regarding "${subject}". Our team will review your message and get back to you within 24-48 hours.`
+                );
+                
+                // Reset form
+                this.reset();
+            }, 2000);
         });
 
         // Navbar Scroll Effect and Active Link
@@ -1238,27 +1352,6 @@
                 }
             });
         });
-
-        // Handle form submission responses
-        const urlParams = new URLSearchParams(window.location.search);
-        const careerStatus = urlParams.get('career');
-        const contactStatus = urlParams.get('contact');
-
-        if (careerStatus === 'success') {
-            showSuccessModal('Application Submitted!', 'Thank you for your interest in joining Krira Tech. We have received your application and our HR team will review it shortly. If your profile matches our requirements, we will contact you for the next steps.');
-            window.history.replaceState({}, document.title, window.location.pathname);
-        } else if (careerStatus === 'error') {
-            showSuccessModal('Submission Failed', 'We apologize, but there was an error submitting your application. Please try again later or contact us directly at kriratech@gmail.com.');
-            window.history.replaceState({}, document.title, window.location.pathname);
-        }
-
-        if (contactStatus === 'success') {
-            showSuccessModal('Message Sent!', 'Thank you for contacting us. We have received your message and will get back to you shortly.');
-            window.history.replaceState({}, document.title, window.location.pathname);
-        } else if (contactStatus === 'error') {
-            showSuccessModal('Message Failed', 'We apologize, but there was an error sending your message. Please try again later or contact us directly at +91 89563 61121.');
-            window.history.replaceState({}, document.title, window.location.pathname);
-        }
     </script>
 </body>
 </html>
