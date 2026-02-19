@@ -114,6 +114,28 @@
             cursor: pointer;
             z-index: 101;
         }
+        .career-option {
+            transition: all 0.3s ease;
+        }
+        .career-option:hover {
+            border-color: #22d3ee;
+            background: rgba(34, 211, 238, 0.1);
+        }
+        .career-option.selected {
+            border-color: #22d3ee;
+            background: rgba(34, 211, 238, 0.2);
+        }
+        .experience-option {
+            transition: all 0.3s ease;
+        }
+        .experience-option:hover {
+            border-color: #22d3ee;
+        }
+        .experience-option.selected {
+            border-color: #22d3ee;
+            background: linear-gradient(135deg, #0ea5e9, #06b6d4);
+            color: white;
+        }
     </style>
     <base target="_blank">
 <base target="_blank">
@@ -136,6 +158,7 @@
                     <a onclick="scrollToSection('about')" class="nav-link text-slate-300 hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">About</a>
                     <a onclick="scrollToSection('services')" class="nav-link text-slate-300 hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Services</a>
                     <a onclick="scrollToSection('products')" class="nav-link text-slate-300 hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Products</a>
+                    <a onclick="scrollToSection('career')" class="nav-link text-slate-300 hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Careers</a>
                     <a onclick="scrollToSection('contact')" class="nav-link text-slate-300 hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Contact</a>
                     <a onclick="scrollToSection('contact')" class="bg-cyan-500 hover:bg-cyan-600 text-white px-5 py-2 rounded-full text-sm font-medium transition-all shadow-lg shadow-cyan-500/25 ml-4">Get Quote</a>
                 </div>
@@ -144,6 +167,7 @@
                     <a onclick="scrollToSection('about')" class="text-slate-300 text-xs whitespace-nowrap">About</a>
                     <a onclick="scrollToSection('services')" class="text-slate-300 text-xs whitespace-nowrap">Services</a>
                     <a onclick="scrollToSection('products')" class="text-slate-300 text-xs whitespace-nowrap">Products</a>
+                    <a onclick="scrollToSection('career')" class="text-slate-300 text-xs whitespace-nowrap">Careers</a>
                     <a onclick="scrollToSection('contact')" class="text-cyan-400 text-xs whitespace-nowrap">Contact</a>
                 </div>
             </div>
@@ -264,7 +288,7 @@
         </div>
     </section>
 
-    <!-- Services Section - REMOVED AIR STERILIZATION CARD -->
+    <!-- Services Section -->
     <section id="services" class="py-24 bg-slate-800/50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
@@ -325,36 +349,18 @@
                     </ul>
                 </div>
 
-<!-- Service 5: Drone -->
-<div class="glass-panel p-8 rounded-2xl hover:bg-slate-800 transition-all duration-300 group border border-transparent hover:border-cyan-500/30">
-    
-    <div class="w-14 h-14 bg-yellow-500/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-yellow-500/20 transition-colors">
-        
-        <!-- DRONE IMAGE ICON -->
-        <img 
-            src="drone.jpg" 
-            alt="Drone Icon"
-            class="w-12 h-12 object-contain"
-        />
-
-    </div>
-    
-    <h4 class="text-xl font-bold text-white mb-3">Drone Services</h4>
-    
-    <p class="text-slate-400 text-sm mb-4">
-        Aerial surveillance, industrial inspection, mapping, surveying, and real-time video transmission.
-    </p>
-    
-    <ul class="text-sm text-slate-500 space-y-2">
-        <li class="flex items-center gap-2">
-            <i class="fas fa-angle-right text-cyan-500"></i> Aerial Imaging
-        </li>
-        <li class="flex items-center gap-2">
-            <i class="fas fa-angle-right text-cyan-500"></i> Hazardous Area Access
-        </li>
-    </ul>
-</div>
-
+                <!-- Service 5: Drone -->
+                <div class="glass-panel p-8 rounded-2xl hover:bg-slate-800 transition-all duration-300 group border border-transparent hover:border-cyan-500/30">
+                    <div class="w-14 h-14 bg-yellow-500/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-yellow-500/20 transition-colors">
+                        <img src="drone.jpg" alt="Drone Icon" class="w-12 h-12 object-contain"/>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">Drone Services</h4>
+                    <p class="text-slate-400 text-sm mb-4">Aerial surveillance, industrial inspection, mapping, surveying, and real-time video transmission.</p>
+                    <ul class="text-sm text-slate-500 space-y-2">
+                        <li class="flex items-center gap-2"><i class="fas fa-angle-right text-cyan-500"></i> Aerial Imaging</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-angle-right text-cyan-500"></i> Hazardous Area Access</li>
+                    </ul>
+                </div>
 
                 <!-- Service 6 -->
                 <div class="glass-panel p-8 rounded-2xl hover:bg-slate-800 transition-all duration-300 group border border-transparent hover:border-cyan-500/30">
@@ -382,20 +388,20 @@
                     </ul>
                 </div>
 
-                 <!-- Service 7 -->
+                 <!-- Service 8 -->
                  <div class="glass-panel p-8 rounded-2xl hover:bg-slate-800 transition-all duration-300 group border border-transparent hover:border-cyan-500/30">
                     <div class="w-14 h-14 bg-pink-500/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-pink-500/20 transition-colors">
-                        <i class="fas fa-mobile-alt text-2xl text-pink-400"></i>
+                        <i class="fas fa-battery-full text-2xl text-pink-400"></i>
                     </div>
-                    <h4 class="text-xl font-bold text-white mb-3"> Battery</h4>
-                    <p class="text-slate-400 text-sm mb-4">LIthium ion battery, Inverter battery, E-rickshaw battery</p>
+                    <h4 class="text-xl font-bold text-white mb-3">Battery</h4>
+                    <p class="text-slate-400 text-sm mb-4">Lithium ion battery, Inverter battery, E-rickshaw battery</p>
                     <ul class="text-sm text-slate-500 space-y-2">
                         <li class="flex items-center gap-2"><i class="fas fa-angle-right text-cyan-500"></i> Customize Battery</li>
                         <li class="flex items-center gap-2"><i class="fas fa-angle-right text-cyan-500"></i> Battery solutions</li>
                     </ul>
                 </div>
 
-                 <!-- Service 8 -->
+                 <!-- Service 9 -->
                  <div class="glass-panel p-8 rounded-2xl hover:bg-slate-800 transition-all duration-300 group border border-transparent hover:border-cyan-500/30 md:col-span-2 lg:col-span-1">
                     <div class="w-14 h-14 bg-orange-500/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-orange-500/20 transition-colors">
                         <i class="fas fa-graduation-cap text-2xl text-orange-400"></i>
@@ -411,7 +417,7 @@
         </div>
     </section>
 
-    <!-- Products Section - ADDED AIR STERILIZER MACHINE WITH PDFs -->
+    <!-- Products Section -->
     <section id="products" class="py-24 bg-slate-900 relative overflow-hidden">
         <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-blue-900/20 to-transparent pointer-events-none"></div>
 
@@ -423,7 +429,7 @@
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- NEW PRODUCT: Air Sterilizer Machine with PDFs -->
+                <!-- Product 1: Air Sterilizer Machine -->
                 <div class="group relative bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-cyan-500/50 transition-all duration-300 hover:-translate-y-2">
                     <div class="h-48 bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center relative overflow-hidden">
                         <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors"></div>
@@ -437,7 +443,6 @@
                             <span class="px-2 py-1 bg-slate-700 rounded text-xs text-slate-300">HEPA</span>
                             <span class="px-2 py-1 bg-slate-700 rounded text-xs text-slate-300">IoT</span>
                         </div>
-                        <!-- PDF Downloads for Air Sterilizer -->
                         <div class="mt-3 pt-3 border-t border-white/10 space-y-2 mb-4">
                             <p class="text-xs text-slate-500 uppercase font-semibold">Download Brochures:</p>
                             <a href="Industrial Air Sterilization system.pdf" download class="flex items-center gap-2 text-xs text-cyan-400 hover:text-cyan-300 transition-colors">
@@ -451,7 +456,7 @@
                     </div>
                 </div>
 
-                <!-- Outdoor Air Sterilizer & AQI IoT System Integration -->
+                <!-- Product 2: Outdoor Air Sterilizer -->
                 <div class="group relative bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-emerald-500/50 transition-all duration-300 hover:-translate-y-2">
                     <div class="h-48 bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center relative overflow-hidden">
                         <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors"></div>
@@ -469,7 +474,7 @@
                     </div>
                 </div>
 
-                <!-- AQI Monitoring Device - WITH Air Quality Index Monitor PDF -->
+                <!-- Product 3: AQI Monitoring Device -->
                 <div class="group relative bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-teal-500/50 transition-all duration-300 hover:-translate-y-2">
                     <div class="h-48 bg-gradient-to-br from-teal-500 to-emerald-600 flex items-center justify-center relative overflow-hidden">
                         <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors"></div>
@@ -483,7 +488,6 @@
                             <span class="px-2 py-1 bg-slate-700 rounded text-xs text-slate-300">CO2</span>
                             <span class="px-2 py-1 bg-slate-700 rounded text-xs text-slate-300">IoT</span>
                         </div>
-                        <!-- PDF Download for AQI Monitoring Device -->
                         <div class="mt-3 pt-3 border-t border-white/10 space-y-2 mb-4">
                             <p class="text-xs text-slate-500 uppercase font-semibold">Download Brochure:</p>
                             <a href="Air Quality Index Monitor.pdf" download class="flex items-center gap-2 text-xs text-teal-400 hover:text-teal-300 transition-colors">
@@ -494,7 +498,7 @@
                     </div>
                 </div>
 
-                <!-- Product 2 -->
+                <!-- Product 4: VOC Tracker -->
                 <div class="group relative bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-purple-500/50 transition-all duration-300 hover:-translate-y-2">
                     <div class="h-48 bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center">
                         <i class="fas fa-flask text-6xl text-white/80 group-hover:scale-110 transition-transform duration-500"></i>
@@ -510,7 +514,7 @@
                     </div>
                 </div>
 
-                <!-- Product 3: Biomass Monitoring with image -->
+                <!-- Product 5: Biomass Monitoring -->
                 <div class="group relative bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-green-500/50 transition-all duration-300 hover:-translate-y-2">
                     <div class="h-48 bg-gradient-to-br from-green-500 to-lime-600 flex items-center justify-center relative overflow-hidden">
                         <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors"></div>
@@ -527,7 +531,7 @@
                     </div>
                 </div>
 
-                <!-- Product 4 -->
+                <!-- Product 6: Machine Monitoring -->
                 <div class="group relative bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-orange-500/50 transition-all duration-300 hover:-translate-y-2">
                     <div class="h-48 bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center">
                         <i class="fas fa-cogs text-6xl text-white/80 group-hover:scale-110 transition-transform duration-500"></i>
@@ -543,7 +547,7 @@
                     </div>
                 </div>
 
-                <!-- Product 5 -->
+                <!-- Product 7: Air Sterilizer Controller -->
                 <div class="group relative bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-cyan-500/50 transition-all duration-300 hover:-translate-y-2">
                     <div class="h-48 bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center">
                         <i class="fas fa-shield-virus text-6xl text-white/80 group-hover:scale-110 transition-transform duration-500"></i>
@@ -559,45 +563,25 @@
                     </div>
                 </div>
 
-                 <!-- Product 5 : Battery System - UPDATED IMAGE STYLE -->
-<div class="group relative bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-cyan-500/50 transition-all duration-300 hover:-translate-y-2">
-    
-    <!-- Top Image Section - MATCHED WITH BIOMASS STYLE -->
-    <div class="h-48 bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center relative overflow-hidden">
-        
-        <!-- Overlay Effect -->
-        <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors"></div>
-
-        <!-- Battery Image -->
-        <img src="battery2.jpeg" 
-             alt="Battery System" 
-             class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity">
-        
-    </div>
-
-
-                    <!-- Content Section -->
+                <!-- Product 8: Smart Battery System -->
+                <div class="group relative bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-cyan-500/50 transition-all duration-300 hover:-translate-y-2">
+                    <div class="h-48 bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors"></div>
+                        <img src="battery2.jpeg" alt="Battery System" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity">
+                    </div>
                     <div class="p-6">
                         <h4 class="text-xl font-bold text-white mb-2">Smart Battery System</h4>
-                        
-                        <p class="text-slate-400 text-sm mb-4 h-12">
-                            Advanced lithium battery management system with real-time monitoring, safety protection, and high efficiency output.
-                        </p>
-
+                        <p class="text-slate-400 text-sm mb-4 h-12">Advanced lithium battery management system with real-time monitoring, safety protection, and high efficiency output.</p>
                         <div class="flex flex-wrap gap-2 mb-4">
                             <span class="px-2 py-1 bg-slate-700 rounded text-xs text-slate-300">Li-ion</span>
                             <span class="px-2 py-1 bg-slate-700 rounded text-xs text-slate-300">BMS</span>
                             <span class="px-2 py-1 bg-slate-700 rounded text-xs text-slate-300">Overcharge Protection</span>
                         </div>
-
-                        <button onclick="openModal('battery')" 
-                            class="w-full py-2 border border-cyan-500 text-cyan-400 rounded-lg hover:bg-cyan-500 hover:text-white transition-colors text-sm font-semibold">
-                            View Details
-                        </button>
+                        <button onclick="openModal('battery')" class="w-full py-2 border border-cyan-500 text-cyan-400 rounded-lg hover:bg-cyan-500 hover:text-white transition-colors text-sm font-semibold">View Details</button>
                     </div>
                 </div>
 
-                <!-- Product 6 -->
+                <!-- Product 9: Entry Exit Counter -->
                 <div class="group relative bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-pink-500/50 transition-all duration-300 hover:-translate-y-2">
                     <div class="h-48 bg-gradient-to-br from-pink-500 to-rose-600 flex items-center justify-center">
                         <i class="fas fa-walking text-6xl text-white/80 group-hover:scale-110 transition-transform duration-500"></i>
@@ -616,8 +600,223 @@
         </div>
     </section>
 
+    <!-- Career Section -->
+    <section id="career" class="py-24 bg-slate-800/50 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-cyan-400 font-semibold tracking-wide uppercase mb-2">Join Our Team</h2>
+                <h3 class="text-3xl md:text-4xl font-display font-bold text-white">Career Opportunities</h3>
+                <p class="mt-4 text-slate-400 max-w-2xl mx-auto">Be part of a team that's shaping the future of embedded systems, robotics, and IoT solutions. We're always looking for passionate individuals.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Left: Why Join Us -->
+                <div class="space-y-8">
+                    <div class="glass-panel p-8 rounded-2xl border border-white/10">
+                        <h4 class="text-2xl font-bold text-white mb-6">Why Work at Krira Tech?</h4>
+                        <div class="space-y-6">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 bg-cyan-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-rocket text-cyan-400 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h5 class="text-white font-semibold mb-1">Innovation-Driven Environment</h5>
+                                    <p class="text-slate-400 text-sm">Work on cutting-edge projects in embedded systems, robotics, and IoT that make a real impact.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-users text-purple-400 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h5 class="text-white font-semibold mb-1">Expert Team</h5>
+                                    <p class="text-slate-400 text-sm">Learn from industry veterans with 15+ years of experience in technology and engineering.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-chart-line text-green-400 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h5 class="text-white font-semibold mb-1">Growth Opportunities</h5>
+                                    <p class="text-slate-400 text-sm">Continuous learning, skill development, and clear career progression paths.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 bg-orange-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-hand-holding-heart text-orange-400 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h5 class="text-white font-semibold mb-1">Work-Life Balance</h5>
+                                    <p class="text-slate-400 text-sm">Flexible working hours and a supportive culture that values your well-being.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Current Openings -->
+                    <div class="glass-panel p-8 rounded-2xl border border-white/10">
+                        <h4 class="text-xl font-bold text-white mb-4">Current Openings</h4>
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between p-4 bg-slate-800/50 rounded-lg">
+                                <div>
+                                    <h5 class="text-white font-semibold">Embedded Systems Engineer</h5>
+                                    <p class="text-slate-400 text-sm">Full-time | Nagpur</p>
+                                </div>
+                                <span class="px-3 py-1 bg-cyan-500/20 text-cyan-400 rounded-full text-xs">Open</span>
+                            </div>
+                            <div class="flex items-center justify-between p-4 bg-slate-800/50 rounded-lg">
+                                <div>
+                                    <h5 class="text-white font-semibold">IoT Developer</h5>
+                                    <p class="text-slate-400 text-sm">Full-time/Internship | Nagpur</p>
+                                </div>
+                                <span class="px-3 py-1 bg-cyan-500/20 text-cyan-400 rounded-full text-xs">Open</span>
+                            </div>
+                            <div class="flex items-center justify-between p-4 bg-slate-800/50 rounded-lg">
+                                <div>
+                                    <h5 class="text-white font-semibold">Robotics Engineer</h5>
+                                    <p class="text-slate-400 text-sm">Full-time | Nagpur</p>
+                                </div>
+                                <span class="px-3 py-1 bg-cyan-500/20 text-cyan-400 rounded-full text-xs">Open</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Application Form -->
+                <div class="glass-panel p-8 rounded-2xl border border-white/10">
+                    <h4 class="text-2xl font-bold text-white mb-2">Apply Now</h4>
+                    <p class="text-slate-400 text-sm mb-6">Fill in your details and we'll get back to you soon.</p>
+                    
+                    <form id="careerForm" action="career_submit.php" method="POST" class="space-y-6">
+                        <!-- Name -->
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-2">Full Name *</label>
+                            <input type="text" name="name" required
+                                class="w-full bg-slate-900/50 border border-slate-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500 transition-colors" 
+                                placeholder="Enter your full name">
+                        </div>
+
+                        <!-- Email -->
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-2">Email Address *</label>
+                            <input type="email" name="email" required
+                                class="w-full bg-slate-900/50 border border-slate-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500 transition-colors" 
+                                placeholder="your@email.com">
+                        </div>
+
+                        <!-- Phone -->
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-2">Contact Number *</label>
+                            <input type="tel" name="phone" required
+                                class="w-full bg-slate-900/50 border border-slate-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500 transition-colors" 
+                                placeholder="+91 12345 67890">
+                        </div>
+
+                        <!-- Position Type Selection -->
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-3">Position Type *</label>
+                            <div class="grid grid-cols-2 gap-4">
+                                <label class="career-option cursor-pointer border border-slate-600 rounded-lg p-4 flex items-center gap-3">
+                                    <input type="radio" name="position_type" value="Internship" class="hidden" required>
+                                    <div class="w-5 h-5 rounded-full border-2 border-slate-500 flex items-center justify-center">
+                                        <div class="w-2.5 h-2.5 rounded-full bg-cyan-400 opacity-0 check-indicator"></div>
+                                    </div>
+                                    <div>
+                                        <span class="text-white font-medium">Internship</span>
+                                        <p class="text-slate-400 text-xs">Learn & Grow</p>
+                                    </div>
+                                </label>
+                                <label class="career-option cursor-pointer border border-slate-600 rounded-lg p-4 flex items-center gap-3">
+                                    <input type="radio" name="position_type" value="Job" class="hidden" required>
+                                    <div class="w-5 h-5 rounded-full border-2 border-slate-500 flex items-center justify-center">
+                                        <div class="w-2.5 h-2.5 rounded-full bg-cyan-400 opacity-0 check-indicator"></div>
+                                    </div>
+                                    <div>
+                                        <span class="text-white font-medium">Full-time Job</span>
+                                        <p class="text-slate-400 text-xs">Build Your Career</p>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Experience Selection -->
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-3">Experience Level *</label>
+                            <div class="grid grid-cols-3 sm:grid-cols-4 gap-3">
+                                <label class="experience-option cursor-pointer border border-slate-600 rounded-lg p-3 text-center">
+                                    <input type="radio" name="experience" value="Fresher" class="hidden" required>
+                                    <span class="text-sm text-slate-300">Fresher</span>
+                                </label>
+                                <label class="experience-option cursor-pointer border border-slate-600 rounded-lg p-3 text-center">
+                                    <input type="radio" name="experience" value="1 Year" class="hidden">
+                                    <span class="text-sm text-slate-300">1 Year</span>
+                                </label>
+                                <label class="experience-option cursor-pointer border border-slate-600 rounded-lg p-3 text-center">
+                                    <input type="radio" name="experience" value="2 Years" class="hidden">
+                                    <span class="text-sm text-slate-300">2 Years</span>
+                                </label>
+                                <label class="experience-option cursor-pointer border border-slate-600 rounded-lg p-3 text-center">
+                                    <input type="radio" name="experience" value="3 Years" class="hidden">
+                                    <span class="text-sm text-slate-300">3 Years</span>
+                                </label>
+                                <label class="experience-option cursor-pointer border border-slate-600 rounded-lg p-3 text-center">
+                                    <input type="radio" name="experience" value="4 Years" class="hidden">
+                                    <span class="text-sm text-slate-300">4 Years</span>
+                                </label>
+                                <label class="experience-option cursor-pointer border border-slate-600 rounded-lg p-3 text-center">
+                                    <input type="radio" name="experience" value="5 Years" class="hidden">
+                                    <span class="text-sm text-slate-300">5 Years</span>
+                                </label>
+                                <label class="experience-option cursor-pointer border border-slate-600 rounded-lg p-3 text-center">
+                                    <input type="radio" name="experience" value="6 Years" class="hidden">
+                                    <span class="text-sm text-slate-300">6 Years</span>
+                                </label>
+                                <label class="experience-option cursor-pointer border border-slate-600 rounded-lg p-3 text-center">
+                                    <input type="radio" name="experience" value="7 Years" class="hidden">
+                                    <span class="text-sm text-slate-300">7 Years</span>
+                                </label>
+                                <label class="experience-option cursor-pointer border border-slate-600 rounded-lg p-3 text-center">
+                                    <input type="radio" name="experience" value="8 Years" class="hidden">
+                                    <span class="text-sm text-slate-300">8 Years</span>
+                                </label>
+                                <label class="experience-option cursor-pointer border border-slate-600 rounded-lg p-3 text-center">
+                                    <input type="radio" name="experience" value="9 Years" class="hidden">
+                                    <span class="text-sm text-slate-300">9 Years</span>
+                                </label>
+                                <label class="experience-option cursor-pointer border border-slate-600 rounded-lg p-3 text-center">
+                                    <input type="radio" name="experience" value="10 Years" class="hidden">
+                                    <span class="text-sm text-slate-300">10 Years</span>
+                                </label>
+                                <label class="experience-option cursor-pointer border border-slate-600 rounded-lg p-3 text-center">
+                                    <input type="radio" name="experience" value="10+ Years" class="hidden">
+                                    <span class="text-sm text-slate-300">10+ Years</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Skills/Resume -->
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-2">Skills & Qualifications</label>
+                            <textarea name="skills" rows="3" 
+                                class="w-full bg-slate-900/50 border border-slate-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500 transition-colors" 
+                                placeholder="Briefly describe your skills, qualifications, and why you'd be a great fit..."></textarea>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" 
+                            class="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-bold py-4 rounded-lg transition-all shadow-lg shadow-cyan-500/25 flex items-center justify-center gap-2">
+                            <i class="fas fa-paper-plane"></i>
+                            Submit Application
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section -->
-    <section id="contact" class="py-24 bg-slate-800/50 relative">
+    <section id="contact" class="py-24 bg-slate-900 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid md:grid-cols-2 gap-16">
                 <div>
@@ -661,65 +860,52 @@
                 </div>
 
                 <div class="glass-panel p-8 rounded-2xl border border-white/10">
-    <form onsubmit="event.preventDefault(); showMessage();" class="space-y-6">
-        
-        <div class="grid md:grid-cols-2 gap-6">
-            <div>
-                <label class="block text-sm font-medium text-slate-300 mb-2">Name</label>
-                <input type="text" 
-                    class="w-full bg-slate-900/50 border border-slate-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500 transition-colors" 
-                    placeholder="Your Name" required>
+                    <form action="contact_submit.php" method="POST" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-slate-300 mb-2">Name</label>
+                                <input type="text" name="name"
+                                    class="w-full bg-slate-900/50 border border-slate-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500 transition-colors" 
+                                    placeholder="Your Name" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-slate-300 mb-2">Email</label>
+                                <input type="email" name="email"
+                                    class="w-full bg-slate-900/50 border border-slate-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500 transition-colors" 
+                                    placeholder="your@email.com" required>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-2">Contact No</label>
+                            <input type="tel" name="phone"
+                                class="w-full bg-slate-900/50 border border-slate-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500 transition-colors" 
+                                placeholder="Your Contact Number" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-2">Subject</label>
+                            <select name="subject" class="w-full bg-slate-900/50 border border-slate-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500 transition-colors">
+                                <option>General Inquiry</option>
+                                <option>Product Information</option>
+                                <option>Custom Solution</option>
+                                <option>Software Inquiry</option>
+                                <option>Prototype Inquiry</option>
+                                <option>Support</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-2">Message</label>
+                            <textarea name="message" rows="4" 
+                                class="w-full bg-slate-900/50 border border-slate-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500 transition-colors" 
+                                placeholder="How can we help you?" required></textarea>
+                        </div>
+                        <button type="submit" 
+                            class="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-bold py-4 rounded-lg transition-all shadow-lg shadow-cyan-500/25">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
             </div>
-
-            <div>
-                <label class="block text-sm font-medium text-slate-300 mb-2">Email</label>
-                <input type="email" 
-                    class="w-full bg-slate-900/50 border border-slate-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500 transition-colors" 
-                    placeholder="your@email.com" required>
-            </div>
         </div>
-
-        <div>
-            <label class="block text-sm font-medium text-slate-300 mb-2">Contact No</label>
-            <input type="tel" 
-                class="w-full bg-slate-900/50 border border-slate-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500 transition-colors" 
-                placeholder="Your Contact Number" required>
-        </div>
-
-        <div>
-            <label class="block text-sm font-medium text-slate-300 mb-2">Subject</label>
-            <select class="w-full bg-slate-900/50 border border-slate-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500 transition-colors">
-                <option>General Inquiry</option>
-                <option>Product Information</option>
-                <option>Custom Solution</option>
-                <option>Software Inquiry</option>
-                <option>Prototype Inquiry</option>
-                <option>Support</option>
-            </select>
-        </div>
-
-        <div>
-            <label class="block text-sm font-medium text-slate-300 mb-2">Message</label>
-            <textarea rows="4" 
-                class="w-full bg-slate-900/50 border border-slate-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500 transition-colors" 
-                placeholder="How can we help you?" required></textarea>
-        </div>
-
-        <button type="submit" 
-            class="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-bold py-4 rounded-lg transition-all shadow-lg shadow-cyan-500/25">
-            Send Message
-        </button>
-
-    </form>
-</div>
-
-<script>
-function showMessage() {
-    alert("✅ Thank you for your inquiry!\n\nOur team will contact you shortly.\n\nWe appreciate your interest in our services.");
-}
-</script>
-</div>
-</div>
     </section>
 
     <!-- Footer -->
@@ -742,6 +928,7 @@ function showMessage() {
                         <li><a onclick="scrollToSection('about')" class="hover:text-cyan-400 transition-colors cursor-pointer">About Us</a></li>
                         <li><a onclick="scrollToSection('services')" class="hover:text-cyan-400 transition-colors cursor-pointer">Services</a></li>
                         <li><a onclick="scrollToSection('products')" class="hover:text-cyan-400 transition-colors cursor-pointer">Products</a></li>
+                        <li><a onclick="scrollToSection('career')" class="hover:text-cyan-400 transition-colors cursor-pointer">Careers</a></li>
                         <li><a onclick="scrollToSection('contact')" class="hover:text-cyan-400 transition-colors cursor-pointer">Contact</a></li>
                     </ul>
                 </div>
@@ -805,10 +992,27 @@ function showMessage() {
         </div>
     </div>
 
-    <!-- Full Screen Image Modal for AQI Product -->
+    <!-- Full Screen Image Modal -->
     <div id="imageModal" class="image-modal hidden" onclick="closeImageModal()">
         <span class="close-btn">&times;</span>
         <img id="fullImage" src="" alt="Product Full View">
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="fixed inset-0 z-[70] hidden overflow-y-auto">
+        <div class="flex items-center justify-center min-h-screen px-4">
+            <div class="fixed inset-0 bg-slate-900/90 backdrop-blur-sm" onclick="closeSuccessModal()"></div>
+            <div class="relative glass-panel rounded-2xl p-8 max-w-md w-full text-center border border-white/10">
+                <div class="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-check text-2xl text-green-400"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-white mb-2" id="successTitle">Thank You!</h3>
+                <p class="text-slate-300 mb-6" id="successMessage">Your application has been submitted successfully. We will contact you shortly.</p>
+                <button onclick="closeSuccessModal()" class="bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-2 rounded-lg transition-colors">
+                    Close
+                </button>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -824,7 +1028,7 @@ function showMessage() {
             }
         }
 
-        // Product Data - Added Smart Battery System Details
+        // Product Data
         const products = {
             'sterilizer_machine': {
                 title: 'Air Sterilizer Machine',
@@ -911,7 +1115,6 @@ function showMessage() {
                 ],
                 tags: ['Retail', 'Malls', 'Event Venues', 'Public Spaces']
             },
-            // ADDED: Smart Battery System Data
             'battery': {
                 title: 'Smart Battery System',
                 desc: 'A high-performance, customizable lithium-ion battery solution designed to deliver reliable power for industrial, mobility, and energy storage applications.',
@@ -952,7 +1155,7 @@ function showMessage() {
             document.body.style.overflow = 'auto';
         }
 
-        // Image Modal Logic for AQI Product
+        // Image Modal Logic
         function openImageModal(imageSrc) {
             const modal = document.getElementById('imageModal');
             const img = document.getElementById('fullImage');
@@ -967,12 +1170,45 @@ function showMessage() {
             document.body.style.overflow = 'auto';
         }
 
-        // Close image modal on Escape key
+        // Success Modal
+        function showSuccessModal(title, message) {
+            document.getElementById('successTitle').innerText = title;
+            document.getElementById('successMessage').innerText = message;
+            document.getElementById('successModal').classList.remove('hidden');
+        }
+
+        function closeSuccessModal() {
+            document.getElementById('successModal').classList.add('hidden');
+        }
+
+        // Close modals on Escape key
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
                 closeModal();
                 closeImageModal();
+                closeSuccessModal();
             }
+        });
+
+        // Career Form - Radio Button Styling
+        document.querySelectorAll('input[name="position_type"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                document.querySelectorAll('.career-option').forEach(option => {
+                    option.classList.remove('selected');
+                    option.querySelector('.check-indicator').classList.add('opacity-0');
+                });
+                this.closest('.career-option').classList.add('selected');
+                this.closest('.career-option').querySelector('.check-indicator').classList.remove('opacity-0');
+            });
+        });
+
+        document.querySelectorAll('input[name="experience"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                document.querySelectorAll('.experience-option').forEach(option => {
+                    option.classList.remove('selected');
+                });
+                this.closest('.experience-option').classList.add('selected');
+            });
         });
 
         // Navbar Scroll Effect and Active Link
@@ -985,7 +1221,7 @@ function showMessage() {
             }
 
             // Update active nav link based on scroll position
-            const sections = ['home', 'about', 'services', 'products', 'contact'];
+            const sections = ['home', 'about', 'services', 'products', 'career', 'contact'];
             const scrollPos = window.scrollY + 100;
 
             sections.forEach(section => {
@@ -1002,6 +1238,27 @@ function showMessage() {
                 }
             });
         });
+
+        // Handle form submission responses
+        const urlParams = new URLSearchParams(window.location.search);
+        const careerStatus = urlParams.get('career');
+        const contactStatus = urlParams.get('contact');
+
+        if (careerStatus === 'success') {
+            showSuccessModal('Application Submitted!', 'Thank you for your interest in joining Krira Tech. We have received your application and our HR team will review it shortly. If your profile matches our requirements, we will contact you for the next steps.');
+            window.history.replaceState({}, document.title, window.location.pathname);
+        } else if (careerStatus === 'error') {
+            showSuccessModal('Submission Failed', 'We apologize, but there was an error submitting your application. Please try again later or contact us directly at kriratech@gmail.com.');
+            window.history.replaceState({}, document.title, window.location.pathname);
+        }
+
+        if (contactStatus === 'success') {
+            showSuccessModal('Message Sent!', 'Thank you for contacting us. We have received your message and will get back to you shortly.');
+            window.history.replaceState({}, document.title, window.location.pathname);
+        } else if (contactStatus === 'error') {
+            showSuccessModal('Message Failed', 'We apologize, but there was an error sending your message. Please try again later or contact us directly at +91 89563 61121.');
+            window.history.replaceState({}, document.title, window.location.pathname);
+        }
     </script>
 </body>
 </html>
