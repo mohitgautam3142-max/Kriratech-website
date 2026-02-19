@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
        1️⃣ SEND MAIL TO ADMIN (HR/Company)
     =============================== */
 
-    $admin_email = "gajendra@kriratech.com";  // Company email
+    $admin_email = "gajendra@kriratech.com";  // Company email - CHANGE THIS TO YOUR EMAIL
 
     $admin_subject = "New Career Application - " . $position_type . " Position";
 
@@ -80,20 +80,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     /* ===============================
-       3️⃣ REDIRECT BACK TO WEBSITE
+       3️⃣ RETURN JSON RESPONSE FOR AJAX
     =============================== */
 
+    header('Content-Type: application/json');
+    
     if($mail_to_admin && $mail_to_user) {
-        header("Location: index.html?career=success#career");
-        exit();
+        echo json_encode([
+            'success' => true,
+            'message' => 'Application submitted successfully!'
+        ]);
     } else {
-        header("Location: index.html?career=error#career");
-        exit();
+        echo json_encode([
+            'success' => false,
+            'message' => 'There was an error sending your application. Please try again or contact us directly.'
+        ]);
     }
+    exit();
 
 } else {
     // If accessed directly without POST data
-    header("Location: index.html#career");
+    header('Location: index.html#career');
     exit();
 }
 
